@@ -38,7 +38,7 @@ export default function Register() {
                 <form className="form" onSubmit={submit}>
                     <div className="form__names">
 
-                        <TextInput 
+                        <TextInput
                             type="text"
                             name="name"
                             value={data.name}
@@ -52,7 +52,7 @@ export default function Register() {
 
                         <InputError className="form__error" message={errors.name}/>
 
-                        <TextInput 
+                        <TextInput
                             type="text"
                             name="lastname"
                             value={data.lastname}
@@ -64,8 +64,8 @@ export default function Register() {
 
                         <InputError className="form__error" message={errors.lastname}/>
                     </div>
-                    
-                    <TextInput 
+
+                    <TextInput
                         type="email"
                         name="email"
                         value={data.email}
@@ -78,7 +78,7 @@ export default function Register() {
 
                     <InputError className="form__error" message={errors.email}/>
 
-                    <TextInput 
+                    <TextInput
                         type="password"
                         name="password"
                         value={data.password}
@@ -90,7 +90,7 @@ export default function Register() {
                     />
 
                     <InputError className="form__error" message={errors.password}/>
-                    
+
                     <PrimaryButton className="submit-button" processing={processing}>Зарегистрироваться</PrimaryButton>
                 </form>
                 <div className="register__to-auth">Уже есть аккаунт? <Link className="register__to-auth_link" href={route('login')}>Войти</Link></div>

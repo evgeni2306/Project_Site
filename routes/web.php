@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\RegistrationController;
+use App\Http\Controllers\AuthorizationController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -23,9 +25,16 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+Route::middleware('guest')->group(function () {
 
+    Route::get('register', [RegistrationController::class, 'create']);
+    Route::post('register', [RegistrationController::class, 'store'])->name('register');
+
+    Route::get('login', [AuthorizationController::class, 'create']);
+    Route::post('login', [AuthorizationController::class, 'store'])->name('login');
+
+});
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-require __DIR__.'/auth.php';

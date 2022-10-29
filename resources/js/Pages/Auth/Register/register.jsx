@@ -4,15 +4,16 @@ import InputLabel from '@/Components/InputLabel/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton/PrimaryButton';
 import TextInput from '@/Components/TextInput/TextInput';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
+import { Inertia } from '@inertiajs/inertia'
 
-export default function Register() {
+export default function Register({errorMessage}) {
     const { data, setData, post, processing, errors, reset } = useForm({
+        errorMessage:errorMessage,
         name: '',
-        lastname: '',
-        email: '',
+        surname: '',
+        login: '',
         password: '',
     });
-
     useEffect(() => {
         return () => {
             reset('password');
@@ -54,7 +55,7 @@ export default function Register() {
 
                         <TextInput
                             type="text"
-                            name="lastname"
+                            name="surname"
                             value={data.lastname}
                             placeholder="Фамилия"
                             className="form__input lastname"
@@ -62,21 +63,21 @@ export default function Register() {
                             required
                         />
 
-                        <InputError className="form__error" message={errors.lastname}/>
+                        <InputError className="form__error" message={errors.surname}/>
                     </div>
 
                     <TextInput
-                        type="email"
-                        name="email"
-                        value={data.email}
-                        placeholder="E-mail"
+                        type="text"
+                        name="login"
+                        value={data.login}
+                        placeholder="Логин"
                         className="form__input"
                         autoComplete="username"
                         handleChange={onHandleChange}
                         required
                     />
 
-                    <InputError className="form__error" message={errors.email}/>
+                    <InputError className="form__error" message={errorMessage}/>
 
                     <TextInput
                         type="password"

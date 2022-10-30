@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import InputError from '@/Components/InputError/InputError';
-import InputLabel from '@/Components/InputLabel/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton/PrimaryButton';
 import TextInput from '@/Components/TextInput/TextInput';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
 
-export default function Register() {
+export default function Register({errorMessage}) {
     const { data, setData, post, processing, errors, reset } = useForm({
+        errorMessage: errorMessage,
         name: '',
-        lastname: '',
-        email: '',
+        surname: '',
+        login: '',
         password: '',
     });
 
@@ -54,29 +54,28 @@ export default function Register() {
 
                         <TextInput
                             type="text"
-                            name="lastname"
-                            value={data.lastname}
+                            name="surname"
+                            value={data.surname}
                             placeholder="Фамилия"
-                            className="form__input lastname"
+                            className="form__input surname"
                             handleChange={onHandleChange}
                             required
                         />
 
-                        <InputError className="form__error" message={errors.lastname}/>
+                        <InputError className="form__error" message={errors.surname}/>
                     </div>
 
                     <TextInput
-                        type="email"
-                        name="email"
-                        value={data.email}
-                        placeholder="E-mail"
+                        type="text"
+                        name="login"
+                        value={data.login}
+                        placeholder="Логин"
                         className="form__input"
-                        autoComplete="username"
                         handleChange={onHandleChange}
                         required
                     />
 
-                    <InputError className="form__error" message={errors.email}/>
+                    <InputError className="form__error" message={errorMessage}/>
 
                     <TextInput
                         type="password"

@@ -19,7 +19,7 @@ class AuthorizationController extends Controller
      */
     public function create()
     {
-        return Inertia::render('Auth/Login');
+        return Inertia::render('Auth/Login/login');
     }
 
     /**

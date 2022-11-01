@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\AuthorizationController;
+use App\Http\Controllers\Interview\GetSpheresController;
+use App\Http\Controllers\Interview\GetDirectionsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -34,6 +36,10 @@ Route::middleware('guest')->group(function () {
     Route::post('login', [AuthorizationController::class, 'store'])->name('login');
 
 });
+Route::get('gs', [GetSpheresController::class, 'create'])->name('sphere');
+Route::get('/gd={idd}', [GetDirectionsController::class, 'create'])->name('direction');
+
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

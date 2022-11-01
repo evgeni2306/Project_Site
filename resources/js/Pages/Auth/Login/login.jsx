@@ -59,12 +59,6 @@ export default function Login({ status,  }) {
 
                     <InputError message={errors.password} className="form__error" />
 
-                    <label className="">
-                        <Checkbox name="remember" value={data.remember} handleChange={onHandleChange} />
-
-                        <span className="">Remember me</span>
-                    </label>
-
                     <PrimaryButton className="submit-button" processing={processing}>
                         Войти
                     </PrimaryButton>

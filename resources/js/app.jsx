@@ -1,7 +1,7 @@
 import '../css/app.scss';
 import '../css/globals.scss';
-import '../js/Pages/Auth/Register/register.scss'
-import '../js/Pages/Auth/Login/login.scss'
+import '../js/Pages/Auth/Register/register.scss';
+import '../js/Pages/Auth/Login/login.scss';
 
 import React from 'react';
 import { createRoot } from 'react-dom/client';

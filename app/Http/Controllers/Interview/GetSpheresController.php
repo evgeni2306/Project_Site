@@ -11,6 +11,7 @@ class GetSpheresController extends Controller
     public function create()
     {
         $spheres = $this->getSpheresForInterview();
+                return Inertia::render('Auth/Register/register', ['spheres' => $spheres]);
 //        return Inertia::render('Auth/Register/register', ['spheres' => $spheres]);
         //Вместо  Auth/Register/register указать путь к странице
     }
@@ -23,7 +24,8 @@ class GetSpheresController extends Controller
 
             public function __construct()
             {
-                $this->url = "route('direction',1)";
+                $this->url = "direction";
+                $this->id = "1";
                 $this->name = 'Web';
             }
         }, new class {
@@ -32,7 +34,8 @@ class GetSpheresController extends Controller
 
             public function __construct()
             {
-                $this->url = "route('direction',2)";
+                $this->url = "direction";
+                $this->id = "2";
                 $this->name = 'Mobile';
             }
         }];

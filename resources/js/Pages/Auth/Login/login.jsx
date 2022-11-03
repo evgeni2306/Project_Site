@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
-import Checkbox from '@/Components/Checkbox';
 import InputError from '@/Components/InputError/InputError';
 import PrimaryButton from '@/Components/PrimaryButton/PrimaryButton';
 import TextInput from '@/Components/TextInput/TextInput';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
+import PasswordShowHide from '@/Components/PasswordShowHide/passwordShowHide';
 
 export default function Login({ status,  }) {
     const { data, setData, post, processing, errors, reset } = useForm({
         login: '',
         password: '',
-        remember: '',
     });
 
     useEffect(() => {
@@ -47,14 +46,9 @@ export default function Login({ status,  }) {
 
                     <InputError message={errors.email} className="form__error" />
 
-                    <TextInput
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        placeholder="Пароль"
-                        className="form__input"
-                        autoComplete="current-password"
-                        handleChange={onHandleChange}
+                    <PasswordShowHide
+                        setData={setData}
+                        password={data.password}
                     />
 
                     <InputError message={errors.password} className="form__error" />

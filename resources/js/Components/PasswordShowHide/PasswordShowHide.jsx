@@ -1,24 +1,35 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import TextInput from '../TextInput/TextInput';
+import './passwordShowHide.scss'
 
-export default function PasswordShowHide() {
+export default function PasswordShowHide({
+  setData,
+  password
+}) {
   const [isShown, setIsSHown] = useState(false);
 
-  const togglePassword = () => {
+  const openEyePath = "/img/openEye.svg";
+  const closeEyePath = "img/closeEye.svg";  
+
+  const togglePassword = (e) => {
+    e.preventDefault();
     setIsSHown((isShown) => !isShown);
   };
 
   return (
-    <div>
+    <div className="password-container">
       <input
           type={isShown ? "text" : "password"}
           name="password"
           placeholder="Пароль"
+          value={password} 
           className="form__input"
+          onInput={e => setData('password', e.target.value)}
           required
       />
-      <button 
-        onClick={togglePassword}>Show / Hide</button>
+      <button
+        className="eye-btn"
+        onClick={togglePassword}><img src={isShown ? openEyePath : closeEyePath}/></button>
     </div>
   );
 }

@@ -59,6 +59,14 @@ body {
         padding: 12px 16px;
         border: 1px solid #DFE1E8;
         border-radius: 3px;
+
+        &:focus {
+            border: 1px solid $primary-btn;
+        }
+    }
+
+    &__error {
+        border: 1px solid $error;
     }
 }
 
@@ -89,5 +97,9 @@ body {
     &_link {
         font-weight: 700;
         color: $primary-btn;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }

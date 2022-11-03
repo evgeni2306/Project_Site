@@ -3,7 +3,7 @@ import { Head, Link, useForm } from '@inertiajs/inertia-react';
 import InputError from '@/Components/InputError/InputError';
 import PrimaryButton from '@/Components/PrimaryButton/PrimaryButton';
 import TextInput from '@/Components/TextInput/TextInput';
-import PasswordShowHide from '@/Components/PasswordShowHide/PasswordShowHide';
+import PasswordShowHide from '@/Components/PasswordShowHide/passwordShowHide';
 
 export default function Register({errorMessage}) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -78,18 +78,9 @@ export default function Register({errorMessage}) {
 
                     <InputError className="form__error" message={errorMessage}/>
 
-                    {/* <TextInput
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        placeholder="Пароль"
-                        className="form__input"
-                        autoComplete="new-password"
-                        handleChange={onHandleChange}
-                        required
-                    /> */}
-
                     <PasswordShowHide
+                        setData={setData}
+                        password={data.password}
                     />
 
                     <InputError className="form__error" message={errors.password}/>

@@ -1,42 +1,38 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers\Interview;
 
-use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Http\Controllers\Controller;
+use App\Files\curl_get;
 
 class GetSpheresController extends Controller
 {
-    public function create()
+    use curl_get;
+
+    public function create(): \Inertia\Response
     {
         $spheres = $this->getSpheresForInterview();
+        if (!is_string($spheres)) {
             return Inertia::render('Interview/InterviewSpheres/interviewSpheres', ['spheres' => $spheres]);
+        }
+        //тут ничего не трогать
+        dd('Ошибка, что-то поломалось(пока на это не обращать внимание)');
+//                return Inertia::render('Auth/Register/register', ['errorMessage'=>$spheres]);
+
     }
 
-    public function getSpheresForInterview()
+    public function getSpheresForInterview(): array|string
     {
-        return [new class {
-            public $url;
-            public $name;
-
-            public function __construct()
-            {
-                $this->url = "direction";
-                $this->id = "1";
-                $this->name = 'Web';
+        $spheres = $this->curlGet('interview/new');
+        if ($spheres[0] == 200) {
+            foreach ($spheres[1] as $sphere) {
+                $sphere->url = "interviewDirection";
             }
-        }, new class {
-            public $url;
-            public $name;
-
-            public function __construct()
-            {
-                $this->url = "direction";
-                $this->id = "2";
-                $this->name = 'Mobile';
-            }
-        }];
+            return $spheres[1];
+        }
+        return $spheres[1]->message;
 
     }
 }

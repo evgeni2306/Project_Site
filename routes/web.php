@@ -4,6 +4,8 @@ use App\Http\Controllers\RegistrationController;
 use App\Http\Controllers\AuthorizationController;
 use App\Http\Controllers\Interview\GetSpheresController;
 use App\Http\Controllers\Interview\GetDirectionsController;
+use App\Http\Controllers\Interview\GetTechnologiesController;
+use App\Http\Controllers\Interview\GetProfessionsController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -19,28 +21,26 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+//Route::get('/', function () {
+//    return Inertia::render('Welcome', [
+//        'canLogin' => Route::has('login'),
+//        'canRegister' => Route::has('register'),
+//        'laravelVersion' => Application::VERSION,
+//        'phpVersion' => PHP_VERSION,
+//    ]);
+//});
 Route::middleware('guest')->group(function () {
 
-    Route::get('register', [RegistrationController::class, 'create']);
-    Route::post('register', [RegistrationController::class, 'store'])->name('register');
+    Route::get('registration', [RegistrationController::class, 'create']);
+    Route::post('registration', [RegistrationController::class, 'store'])->name('registration');
 
     Route::get('login', [AuthorizationController::class, 'create']);
     Route::post('login', [AuthorizationController::class, 'store'])->name('login');
 
 });
-Route::get('gs', [GetSpheresController::class, 'create'])->name('sphere');
-Route::get('/gd={idd}', [GetDirectionsController::class, 'create'])->name('direction');
+Route::get('/interview/new', [GetSpheresController::class, 'create'])->name('interviewSphere');
+Route::get('/interview/new/sphere={idd}', [GetDirectionsController::class, 'create'])->name('interviewDirection');
+Route::get('interview/new/sphere/direction={idd}', [GetTechnologiesController::class, 'create'])->name('interviewTechnology');
+Route::get('interview/new/sphere/direction/technology={idd}', [GetProfessionsController::class, 'create'])->name('interviewProfession');
 
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 

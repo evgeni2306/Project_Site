@@ -24,7 +24,7 @@ export default function Login({ status,  }) {
         setData(event.target.name, event.target.type === 'checkbox' ? event.target.checked : event.target.value);
     };
 
-    const submit = (e) => { 
+    const submit = (e) => {
         e.preventDefault();
 
         post(route('login'));
@@ -60,7 +60,7 @@ export default function Login({ status,  }) {
                         Войти
                     </PrimaryButton>
                 </form>
-                <div className="register__to-auth">Еще нет аккаунта? <Link className="register__to-auth_link" href={route('register')}>Зарегистрироваться</Link></div>
+                <div className="register__to-auth">Еще нет аккаунта? <Link className="register__to-auth_link" href={route('registration')}>Зарегистрироваться</Link></div>
             </div>
         </div>
     );

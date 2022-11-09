@@ -6,7 +6,7 @@ import PrimaryButton from '../PrimaryButton/primaryButton';
 import SecondaryButton from '../SecondaryButton/secondaryButton';
 
 export default function Header({}) {
-    
+
     return (
         <div className="header">
             <div className="header__container">
@@ -20,7 +20,7 @@ export default function Header({}) {
                 </nav>
                 <div className="header__buttons">
                     <Link href={route('login')}><SecondaryButton>Войти</SecondaryButton></Link>
-                    <Link href={route('register')}><PrimaryButton>Зарегистрироваться</PrimaryButton></Link>
+                    <Link href={route('registration')}><PrimaryButton>Зарегистрироваться</PrimaryButton></Link>
                 </div>
             </div>
         </div>

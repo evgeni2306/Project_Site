@@ -29,7 +29,7 @@ export default function Register({errorMessage}) {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route('register'));
+        post(route('registration'));
     };
 
     return (

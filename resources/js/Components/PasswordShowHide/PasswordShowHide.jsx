@@ -8,7 +8,7 @@ export default function PasswordShowHide({
 }) {
   const [isShown, setIsSHown] = useState(false);
 
-  const openEyePath = "/img/openEye.svg";
+  const openEyePath = "img/openEye.svg";
   const closeEyePath = "img/closeEye.svg";  
 
   const togglePassword = (e) => {

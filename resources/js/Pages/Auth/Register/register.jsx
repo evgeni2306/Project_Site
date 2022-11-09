@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
 import InputError from '@/Components/InputError/InputError';
-import PrimaryButton from '@/Components/PrimaryButton/PrimaryButton';
+import PrimaryButton from '@/Components/PrimaryButton/primaryButton';
 import TextInput from '@/Components/TextInput/TextInput';
 import PasswordShowHide from '@/Components/PasswordShowHide/passwordShowHide';
+
+import './register.scss';
 
 export default function Register({errorMessage}) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -32,7 +34,7 @@ export default function Register({errorMessage}) {
 
     return (
         <div className="container">
-            <div className="logo"><span className="logo__icon">логотипчик</span></div>
+            <div className="logo-register"><span className="logo-register__icon">логотипчик</span></div>
             <div className="form__container">
                 <Head title="Register" />
                 <h1 className="register__title">Регистрация</h1>
@@ -85,7 +87,7 @@ export default function Register({errorMessage}) {
 
                     <InputError className="form__error" message={errors.password}/>
 
-                    <PrimaryButton className="submit-button" processing={processing}>Зарегистрироваться</PrimaryButton>
+                    <PrimaryButton className="primary-button" processing={processing}>Зарегистрироваться</PrimaryButton>
                 </form>
                 <div className="register__to-auth">Уже есть аккаунт? <Link className="register__to-auth_link" href={route('login')}>Войти</Link></div>
             </div>

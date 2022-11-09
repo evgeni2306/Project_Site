@@ -11,9 +11,7 @@ class GetSpheresController extends Controller
     public function create()
     {
         $spheres = $this->getSpheresForInterview();
-                return Inertia::render('Auth/Register/register', ['spheres' => $spheres]);
-//        return Inertia::render('Auth/Register/register', ['spheres' => $spheres]);
-        //Вместо  Auth/Register/register указать путь к странице
+            return Inertia::render('Interview/InterviewSpheres/interviewSpheres', ['spheres' => $spheres]);
     }
 
     public function getSpheresForInterview()

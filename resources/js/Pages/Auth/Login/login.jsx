@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import InputError from '@/Components/InputError/InputError';
-import PrimaryButton from '@/Components/PrimaryButton/PrimaryButton';
+import PrimaryButton from '@/Components/PrimaryButton/primaryButton';
 import TextInput from '@/Components/TextInput/TextInput';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
 import PasswordShowHide from '@/Components/PasswordShowHide/passwordShowHide';
+
+import '../Register/register.scss';
+
 
 export default function Login({ status,  }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -30,7 +33,7 @@ export default function Login({ status,  }) {
     return (
         <div className="container">
             <Head title="Log in" />
-            <div className="logo"><span className="logo__icon">логотипчик</span></div>
+            <div className="logo-register"><span className="logo-register__icon">логотипчик</span></div>
             {status && <div className="">{status}</div>}
             <div className="form__container">
                 <h1 className="register__title">Войти в аккаунт</h1>
@@ -53,7 +56,7 @@ export default function Login({ status,  }) {
 
                     <InputError message={errors.password} className="form__error" />
 
-                    <PrimaryButton className="submit-button" processing={processing}>
+                    <PrimaryButton className="primary-button" processing={processing}>
                         Войти
                     </PrimaryButton>
                 </form>

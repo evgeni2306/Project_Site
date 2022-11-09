@@ -1,0 +1,78 @@
+@import '../../../css/globals.scss';
+
+.header {
+    padding: 0 100px;
+    width: 100%;
+    color: #FFFFFF;
+    background: $header-bg;
+
+    &__container {
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+    }
+}
+
+.logo {
+    margin: 0;
+    display: flex;
+    font-weight: 900;
+    font-size: 21px;
+    line-height: 23px;
+
+    &__icon {
+        background: linear-gradient(90.15deg, #5F82FF 0.13%, #00E6E6 99.89%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}
+
+.menu {
+    &__list {
+        display: flex;
+        padding: 0;
+        margin: 0;
+    }
+
+    &__item {
+        padding: 20px 0;
+        position: relative;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            margin-right: 32px;
+        }
+
+        &:hover {
+            font-weight: 700;
+
+            &::after {
+                content: "";
+                height: 4px;
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                background: $primary-btn;
+                border-radius: 4px;
+            }
+        }
+    }
+}
+
+.primary-button {
+    padding: 10px 20px !important;
+    border: 1px solid #345CEB !important;
+}
+
+.secondary-button {
+    margin-right: 12px;
+}

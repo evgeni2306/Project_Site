@@ -1,11 +1,11 @@
 import React from 'react';
-import './primaryButton.scss';
+import './secondaryButton.scss';
 
-export default function PrimaryButton({ type = 'submit', className = '', processing, children }) {
+export default function SecondaryButton({ type = '', className = '', processing, children }) {
     return (
         <button
             type={type}
-            className="primary-button"
+            className="secondary-button"
             disabled={processing}
         >
             {children}

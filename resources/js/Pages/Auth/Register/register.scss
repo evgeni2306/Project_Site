@@ -2,16 +2,14 @@
 
 html,
 body {
-    height: 100%;
-    font-family: 'Suisse Intl';
-    background-color: $register-bg;
+    background-color: $main-bg;
 }
 
 .container {
     overflow-y: hidden;
 }
 
-.logo {
+.logo-register {
     margin-top: 130px;
     display: flex;
     font-weight: 900;
@@ -79,16 +77,8 @@ body {
     width: 100%;
 }
 
-.submit-button {
+.primary-button {
     width: 100%;
-    padding: 15px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 120%;
-    background: $primary-btn;
-    border-radius: 3px;
-    border: none;
 }
 
 .register__to-auth {

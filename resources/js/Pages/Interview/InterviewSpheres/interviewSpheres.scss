@@ -1,0 +1,22 @@
+@import '../../../../css/globals.scss';
+
+html,
+body {
+    background-color: $main-bg;
+}
+
+.spheres {
+    text-align: center;
+
+    &__title {
+        margin: 77px 0 40px 0;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 32px;
+    }
+
+    &__cards {
+        display: flex;
+        gap: 20px;
+    }
+}

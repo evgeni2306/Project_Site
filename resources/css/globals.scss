@@ -34,6 +34,12 @@ h6 {
     margin: 0;
 }
 
+ul,
+ol,
+li {
+    list-style: none;
+}
+
 a {
     text-decoration: none;
 }
@@ -42,5 +48,9 @@ button {
     cursor: pointer;
 }
 
-$register-bg: #F3F5F9;
+$main-bg: #F3F5F9;
 $primary-btn: #345CEB;
+$primary-btn-hover: #2A51DB;
+$primary-btn-active: #254BD1;
+$error: #F8222F;
+$header-bg: #04113F;

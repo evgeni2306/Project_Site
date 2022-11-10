@@ -1,19 +1,21 @@
 import React, { useEffect } from 'react';
-import InputError from '@/Components/InputError/InputError';
-import InputLabel from '@/Components/InputLabel/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton/PrimaryButton';
-import TextInput from '@/Components/TextInput/TextInput';
 import { Head, Link, useForm } from '@inertiajs/inertia-react';
-import { Inertia } from '@inertiajs/inertia'
+import InputError from '@/Components/InputError/InputError';
+import PrimaryButton from '@/Components/PrimaryButton/primaryButton';
+import TextInput from '@/Components/TextInput/TextInput';
+import PasswordShowHide from '@/Components/PasswordShowHide/passwordShowHide';
+
+import './register.scss';
 
 export default function Register({errorMessage}) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        errorMessage:errorMessage,
+        errorMessage: errorMessage,
         name: '',
         surname: '',
         login: '',
         password: '',
     });
+
     useEffect(() => {
         return () => {
             reset('password');
@@ -27,12 +29,12 @@ export default function Register({errorMessage}) {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route('register'));
+        post(route('registration'));
     };
 
     return (
         <div className="container">
-            <div className="logo"><span className="logo__icon">логотипчик</span></div>
+            <div className="logo-register"><span className="logo-register__icon">логотипчик</span></div>
             <div className="form__container">
                 <Head title="Register" />
                 <h1 className="register__title">Регистрация</h1>
@@ -56,9 +58,9 @@ export default function Register({errorMessage}) {
                         <TextInput
                             type="text"
                             name="surname"
-                            value={data.lastname}
+                            value={data.surname}
                             placeholder="Фамилия"
-                            className="form__input lastname"
+                            className="form__input surname"
                             handleChange={onHandleChange}
                             required
                         />
@@ -72,27 +74,20 @@ export default function Register({errorMessage}) {
                         value={data.login}
                         placeholder="Логин"
                         className="form__input"
-                        autoComplete="username"
                         handleChange={onHandleChange}
                         required
                     />
 
                     <InputError className="form__error" message={errorMessage}/>
 
-                    <TextInput
-                        type="password"
-                        name="password"
-                        value={data.password}
-                        placeholder="Пароль"
-                        className="form__input"
-                        autoComplete="new-password"
-                        handleChange={onHandleChange}
-                        required
+                    <PasswordShowHide
+                        setData={setData}
+                        password={data.password}
                     />
 
                     <InputError className="form__error" message={errors.password}/>
 
-                    <PrimaryButton className="submit-button" processing={processing}>Зарегистрироваться</PrimaryButton>
+                    <PrimaryButton className="primary-button" processing={processing}>Зарегистрироваться</PrimaryButton>
                 </form>
                 <div className="register__to-auth">Уже есть аккаунт? <Link className="register__to-auth_link" href={route('login')}>Войти</Link></div>
             </div>

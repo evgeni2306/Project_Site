@@ -1,0 +1,60 @@
+@import '../../../css/globals.scss';
+
+.wrapper {
+    margin: 0 200px;
+    display: flex;
+    gap: 12px;
+}
+
+.sphere {
+    width: 230px;
+    background: #FFFFFF;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    
+    &__container {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    &__icon {
+        width: 64px;
+        height: 64px;
+        padding: 19px 16px;
+        background: #EBEFFD;
+        border-radius: 50%;
+    }
+
+    &__icon svg {
+        fill: $primary-btn;
+    }
+
+    &__name {
+        margin-top: 17px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        color: #000;
+    }
+
+    &:hover {
+        border: 2px solid $primary-btn;
+        box-shadow: 0px 8px 40px rgba(4, 17, 63, 0.05);
+    }
+
+    &:hover &__icon {
+        width: 64px;
+        height: 64px;
+        padding: 19px 16px;
+        background: linear-gradient(90.15deg, #5F82FF 0.13%, #00E6E6 99.89%);
+        border-radius: 50%;
+    }
+
+    &:hover &__icon svg {
+        fill: #FFFFFF;
+    }
+}

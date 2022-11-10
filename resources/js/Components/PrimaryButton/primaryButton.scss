@@ -1,0 +1,21 @@
+@import '../../../css/globals.scss';
+
+.primary-button {
+    padding: 15px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 120%;
+    background: $primary-btn;
+    border-radius: 3px;
+    border: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        background: $primary-btn-hover;
+    }
+
+    &:active {
+        background: $primary-btn-active;
+    }
+}

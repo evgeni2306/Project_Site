@@ -15,6 +15,6 @@ trait curl_post
         $data = curl_exec($ch);
         $info = curl_getinfo($ch);
         curl_close($ch);
-        return [$info['http_code'],$data];
+        return [$info['http_code'],json_decode($data)];
     }
 }

@@ -2,16 +2,14 @@
 
 html,
 body {
-    height: 100%;
-    font-family: 'Suisse Intl';
-    background-color: $register-bg;
+    background-color: $main-bg;
 }
 
 .container {
-    
+    overflow-y: hidden;
 }
 
-.logo {
+.logo-register {
     margin-top: 130px;
     display: flex;
     font-weight: 900;
@@ -59,6 +57,14 @@ body {
         padding: 12px 16px;
         border: 1px solid #DFE1E8;
         border-radius: 3px;
+
+        &:focus {
+            border: 1px solid $primary-btn;
+        }
+    }
+
+    &__error {
+        border: 1px solid $error;
     }
 }
 
@@ -67,20 +73,12 @@ body {
     margin-right: 12px;
 }
 
-.lastname {
+.surname {
     width: 100%;
 }
 
-.submit-button {
+.primary-button {
     width: 100%;
-    padding: 15px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 120%;
-    background: $primary-btn;
-    border-radius: 3px;
-    border: none;
 }
 
 .register__to-auth {
@@ -89,5 +87,9 @@ body {
     &_link {
         font-weight: 700;
         color: $primary-btn;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 }

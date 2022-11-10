@@ -1,52 +1,43 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Files\curl_post;
 
 class AuthorizationController extends Controller
 {
-    /**
-     * Display the login view.
-     *
-     * @return \Inertia\Response
-     */
-    public function create()
+    use curl_post;
+
+    public function create($errorMessage = null): \Inertia\Response
     {
-        return Inertia::render('Auth/Login/login');
+        return Inertia::render('Auth/Login/login', ['errorMessage' => $errorMessage]);
     }
 
-    /**
-     * Handle an incoming authentication request.
-     *
-     * @param  \App\Http\Requests\Auth\LoginRequest  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function store(Request $request)
     {
-        dd($request);
+        $request->validate([
+            'login' => 'required|string',
+            'password' => 'required|string',
+        ]);
+        $url = 'login';
+        $data = $this->curlPost($url, $request->all());
+        if ($data[0] != 200) {
+            return $this->create($errorMessage = $data[1]->message);
+        }
+        $_SESSION["auth"] = true;
+        $_SESSION["authKey"] = $data[1]->key;
+        if (isset($_SESSION["auth"])) {
+            dd($_SESSION["authKey"]);
+
+        }
+        dd('problem');
     }
 
-    /**
-     * Destroy an authenticated session.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy(Request $request)
-    {
-        Auth::guard('web')->logout();
 
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect('/');
-    }
 }

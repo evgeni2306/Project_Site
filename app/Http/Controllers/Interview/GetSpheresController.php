@@ -13,6 +13,9 @@ class GetSpheresController extends Controller
 
     public function create(): \Inertia\Response
     {
+//        if (!isset($_SESSION["auth"])) {
+//            return redirect(route('login'));
+//        }
         $spheres = $this->getSpheresForInterview();
         if (!is_string($spheres)) {
             return Inertia::render('Interview/InterviewSpheres/interviewSpheres', ['spheres' => $spheres]);

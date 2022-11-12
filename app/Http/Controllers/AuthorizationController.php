@@ -19,7 +19,7 @@ class AuthorizationController extends Controller
         return Inertia::render('Auth/Login/login', ['errorMessage' => $errorMessage]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): \Inertia\Response|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
     {
         $request->validate([
             'login' => 'required|string',
@@ -32,7 +32,7 @@ class AuthorizationController extends Controller
         }
         $_SESSION["auth"] = true;
         $_SESSION["authKey"] = $data[1]->key;
-
+        return redirect(\route('interviewSphere'));
     }
 
 

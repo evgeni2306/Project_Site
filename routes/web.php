@@ -39,9 +39,17 @@ Route::middleware('guest')->group(function () {
     Route::post('login', [AuthorizationController::class, 'store'])->name('login');
 
 });
-Route::get('/interview/new', [GetSpheresController::class, 'create'])->name('interviewSphere');
-Route::get('/interview/new/sphere={idd}', [GetDirectionsController::class, 'create'])->name('interviewDirection');
-Route::get('interview/new/sphere/direction={idd}', [GetTechnologiesController::class, 'create'])->name('interviewTechnology');
-Route::get('interview/new/sphere/direction/technology={idd}', [GetProfessionsController::class, 'create'])->name('interviewProfession');
 
+Route::middleware('auth')->group(function () {
 
+    Route::get('/interview/new', [GetSpheresController::class, 'create'])->name('interviewSphere');
+    Route::get('/interview/new/sphere={idd}', [GetDirectionsController::class, 'create'])->name('interviewDirection');
+    Route::get('interview/new/sphere/direction={idd}', [GetTechnologiesController::class, 'create'])->name('interviewTechnology');
+    Route::get('interview/new/sphere/direction/technology={idd}', [GetProfessionsController::class, 'create'])->name('interviewProfession');
+
+});
+
+Route::get('/logout', function () {
+    session_destroy();
+    return redirect(\route('login'));
+});

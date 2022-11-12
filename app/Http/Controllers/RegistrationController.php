@@ -16,7 +16,7 @@ class RegistrationController extends Controller
         return Inertia::render('Auth/Register/register', ['errorMessage' => $errorMessage]);
     }
 
-    public function store(Request $request): \Inertia\Response
+    public function store(Request $request): \Inertia\Response|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -32,6 +32,6 @@ class RegistrationController extends Controller
         }
         $_SESSION["auth"] = true;
         $_SESSION["authKey"] = $data[1]->key;
-
+        return redirect(\route('interviewSphere'));
     }
 }

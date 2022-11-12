@@ -30,7 +30,8 @@ class RegistrationController extends Controller
         if ($data[0] != 200) {
             return $this->create($errorMessage = $data[1]->message);
         }
-        dd('ok');
+        $_SESSION["auth"] = true;
+        $_SESSION["authKey"] = $data[1]->key;
 
     }
 }

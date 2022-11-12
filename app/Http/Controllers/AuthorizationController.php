@@ -32,11 +32,7 @@ class AuthorizationController extends Controller
         }
         $_SESSION["auth"] = true;
         $_SESSION["authKey"] = $data[1]->key;
-        if (isset($_SESSION["auth"])) {
-            dd($_SESSION["authKey"]);
 
-        }
-        dd('problem');
     }
 
 

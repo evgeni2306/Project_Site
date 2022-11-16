@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace App\Http\Controllers\Interview;
 
 use Illuminate\Http\Request;
@@ -11,7 +12,7 @@ class GetDirectionsController extends Controller
 {
     use curl_get;
 
-    public function create($id):\Inertia\Response
+    public function create($id): \Inertia\Response
     {
         $directions = $this->getDirectionsForInterview($id);
         if (!is_string($directions)) {
@@ -23,9 +24,10 @@ class GetDirectionsController extends Controller
 //                return Inertia::render('Auth/Register/register', ['errorMessage'=>$spheres]);
 
     }
+
     public function getDirectionsForInterview($id)
     {
-        $directions = $this->curlGet('interview/new/sphere',"=$id");
+        $directions = $this->curlGet('interview/new/sphere', "=$id");
         if ($directions[0] == 200) {
             foreach ($directions[1] as $direction) {
                 $direction->url = "interviewTechnology";

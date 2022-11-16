@@ -7,6 +7,8 @@ use App\Http\Controllers\Interview\GetDirectionsController;
 use App\Http\Controllers\Interview\GetTechnologiesController;
 use App\Http\Controllers\Interview\GetProfessionsController;
 use App\Http\Controllers\Interview\PreviewPageController;
+use App\Http\Controllers\Interview\InterviewStartController;
+use App\Http\Controllers\Interview\GetNextQuestionController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -47,7 +49,8 @@ Route::middleware('auth')->group(function () {
     Route::get('interview/new/sphere/direction={idd}', [GetTechnologiesController::class, 'create'])->name('interviewTechnology');
     Route::get('interview/new/sphere/direction/technology={idd}', [GetProfessionsController::class, 'create'])->name('interviewProfession');
     Route::get('interview/new/sphere/direction/technology/profession={idd}', [PreviewPageController::class, 'create'])->name('interviewPreview');
-
+    Route::get('interview/start={idd}', [InterviewStartController::class, 'startInterview'])->name('interviewStart');
+    Route::get('interview/question', [GetNextQuestionController::class, 'nextQuestion'])->name('interviewQuestion');
 });
 
 Route::get('/logout', function () {

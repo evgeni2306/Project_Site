@@ -5,9 +5,9 @@ namespace App\Files;
 
 trait curl_get
 {
-    function curlGet($url, $parameter = null):array
+    function curlGet($url, $parameter = null): array
     {
-        $url = \env('SERVER_URL') . $url.$parameter;
+        $url = \env('SERVER_URL') . $url . $parameter;
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);

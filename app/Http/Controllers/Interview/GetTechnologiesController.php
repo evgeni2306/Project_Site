@@ -11,7 +11,7 @@ class GetTechnologiesController extends Controller
 {
     use curl_get;
 
-    public function create($id):\Inertia\Response
+    public function create($id): \Inertia\Response
     {
         $technologies = $this->getTechnologiesForInterview($id);
         if (!is_string($technologies)) {
@@ -23,9 +23,10 @@ class GetTechnologiesController extends Controller
 //                return Inertia::render('Auth/Register/register', ['errorMessage'=>$spheres]);
 
     }
+
     public function getTechnologiesForInterview($id)
     {
-        $directions = $this->curlGet('interview/new/sphere/direction',"=$id");
+        $directions = $this->curlGet('interview/new/sphere/direction', "=$id");
         if ($directions[0] == 200) {
             foreach ($directions[1] as $direction) {
                 $direction->url = "interviewProfession";

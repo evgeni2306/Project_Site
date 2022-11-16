@@ -11,7 +11,7 @@ export default function InterviewProfessions({professions}) {
         <div className="professions">
             <Head title="Interview Professions" />
             <Header />
-            <h1 className="professions__title">Выберите направление разработки</h1>
+            <h1 className="professions__title">Выберите профессию</h1>
             <InfoCard data={professions}/>
         </div>
     )

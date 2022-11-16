@@ -16,7 +16,7 @@ class RegistrationController extends Controller
         return Inertia::render('Auth/Register/register', ['errorMessage' => $errorMessage]);
     }
 
-    public function store(Request $request): \Inertia\Response
+    public function store(Request $request): \Inertia\Response|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -30,7 +30,8 @@ class RegistrationController extends Controller
         if ($data[0] != 200) {
             return $this->create($errorMessage = $data[1]->message);
         }
-        dd('ok');
-
+        $_SESSION["auth"] = true;
+        $_SESSION["authKey"] = $data[1]->key;
+        return redirect(\route('interviewSphere'));
     }
 }

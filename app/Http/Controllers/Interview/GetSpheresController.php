@@ -18,14 +18,15 @@ class GetSpheresController extends Controller
             return Inertia::render('Interview/InterviewSpheres/interviewSpheres', ['spheres' => $spheres]);
         }
         //тут ничего не трогать
-        dd('Ошибка, что-то поломалось(пока на это не обращать внимание)');
+        dd('проблема с загрузкой сфер');
 //                return Inertia::render('Auth/Register/register', ['errorMessage'=>$spheres]);
 
     }
 
-    public function getSpheresForInterview(): array|string
+    public function getSpheresForInterview(): string|array
     {
-        $spheres = $this->curlGet('interview/new');
+        $url = 'interview/new';
+        $spheres = $this->curlGet($url);
         if ($spheres[0] == 200) {
             foreach ($spheres[1] as $sphere) {
                 $sphere->url = "interviewDirection";

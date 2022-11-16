@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Interview;
 use App\Files\curl_get;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Inertia\Inertia;
 
 class GetTechnologiesController extends Controller
 {
@@ -15,8 +16,7 @@ class GetTechnologiesController extends Controller
     {
         $technologies = $this->getTechnologiesForInterview($id);
         if (!is_string($technologies)) {
-            dd($technologies);//<-эту строчку убрать  расскоментировать нижнюю и указать путь к странице
-            //                return Inertia::render('Auth/Register/register', ['technologies' => $technologies]);
+            return Inertia::render('Interview/InterviewTechnologies/interviewTechnologies', ['technologies' => $technologies]);
         }
         //тут ничего не трогать
         dd($technologies);

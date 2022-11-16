@@ -15,8 +15,7 @@ class GetDirectionsController extends Controller
     {
         $directions = $this->getDirectionsForInterview($id);
         if (!is_string($directions)) {
-            dd($directions);// <-эту строчку убрать  расскоментировать нижнюю и указать путь к странице
-            //                return Inertia::render('Auth/Register/register', ['directions' => $directions]);
+            return Inertia::render('Interview/InterviewDirections/interviewDirections', ['directions' => $directions]);
         }
         //тут ничего не трогать
         dd($directions);

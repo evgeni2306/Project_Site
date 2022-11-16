@@ -13,9 +13,25 @@
         justify-content: space-between;
     }
 
-    &__buttons {
+    &__user {
         display: flex;
         align-items: center;
+        cursor: pointer;
+
+        &-img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+        }
+        
+        &-arrow {
+            width: 10px;
+            height: 10px;
+            border-top: 3px solid #FFFFFF;
+            border-right: 3px solid #FFFFFF;
+            margin-left: 10px;
+            transform: rotate(135deg);
+        }
     }
 }
 

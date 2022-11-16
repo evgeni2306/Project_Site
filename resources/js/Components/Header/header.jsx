@@ -1,9 +1,6 @@
 import React from 'react';
-import { Link } from '@inertiajs/inertia-react';
 
 import './header.scss';
-import PrimaryButton from '../PrimaryButton/primaryButton';
-import SecondaryButton from '../SecondaryButton/secondaryButton';
 
 export default function Header({}) {
 
@@ -18,10 +15,10 @@ export default function Header({}) {
                         <li className="menu__item">Гайд по собеседованиям</li>
                     </ul>
                 </nav>
-                <div className="header__buttons">
-                    <Link href={route('login')}><SecondaryButton>Войти</SecondaryButton></Link>
-                    <Link href={route('registration')}><PrimaryButton>Зарегистрироваться</PrimaryButton></Link>
-                </div>
+                <nav className="header__user">
+                    <img className="header__user-img" src="/img/user.png" alt="user" />
+                    <span className="header__user-arrow"></span>
+                </nav>
             </div>
         </div>
     );

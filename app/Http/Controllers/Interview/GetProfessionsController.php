@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Interview;
 use App\Files\curl_get;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Inertia\Inertia;
 
 class GetProfessionsController extends Controller
 {
@@ -15,21 +16,21 @@ class GetProfessionsController extends Controller
     {
         $professions = $this->getProfessionsForInterview($id);
         if (!is_string($professions)) {
-            dd($professions);//<-эту строчку убрать  расскоментировать нижнюю и указать путь к странице
-            //                return Inertia::render('Auth/Register/register', ['professions' => $professions]);
+            return Inertia::render('Interview/InterviewProfessions/interviewProfessions', ['professions' => $professions]);
         }
         //тут ничего не трогать
-        dd($professions);
+        dd('проблема с загрузкой профессий');
 //                return Inertia::render('Auth/Register/register', ['errorMessage'=>$spheres]);
 
     }
 
-    public function getProfessionsForInterview($id)
+    public function getProfessionsForInterview($id): string|array
     {
-        $directions = $this->curlGet('interview/new/sphere/direction/technology', "=$id");
+        $url = 'interview/new/sphere/direction/technology';
+        $directions = $this->curlGet($url, "=$id");
         if ($directions[0] == 200) {
             foreach ($directions[1] as $direction) {
-                $direction->url = "пока что пусто";
+                $direction->url = "interviewPreview";
             }
             return $directions[1];
         }

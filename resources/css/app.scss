@@ -1,29 +1,27 @@
-@import url(//db.onlinewebfonts.com/c/88f10bf18a36407ef36bf30bc25a3618?family=Suisse+Intl);
+@font-face {
+    font-family: "Suisse Intl";
+    src: url("/fonts/SuisseIntl-Regular.otf") format("otf");
+    font-style: normal;
+    font-weight: 400;
+}
 
-// @font-face {
-//     font-family: "Suisse Intl";
-//     src: url("../../public/fonts/SuisseIntl-Regular.otf") format("otf");
-//     font-style: normal;
-//     font-weight: 400;
-// }
+@font-face {
+    font-family: "Suisse Intl";
+    src: url("/fonts/SuisseIntl-Medium.otf") format("otf");
+    font-style: normal;
+    font-weight: 500;
+}
 
-// @font-face {
-//     font-family: "Suisse Intl";
-//     src: url("../../public/fonts/SuisseIntl-Medium.otf") format("otf");
-//     font-style: normal;
-//     font-weight: 500;
-// }
+@font-face {
+    font-family: "Suisse Intl";
+    src: url("/fonts/SuisseIntl-SemiBold.otf") format("otf");
+    font-style: normal;
+    font-weight: 600;
+}
 
-// @font-face {
-//     font-family: "Suisse Intl";
-//     src: url("../../public/fonts/SuisseIntl-SemiBold.otf") format("otf");
-//     font-style: normal;
-//     font-weight: 600;
-// }
-
-// @font-face {
-//     font-family: "Suisse Intl";
-//     src: url("../../public/fonts/SuisseIntl-Bold.otf") format("otf");
-//     font-style: normal;
-//     font-weight: 700;
-// }
+@font-face {
+    font-family: "Suisse Intl";
+    src: url("/fonts/SuisseIntl-Bold.otf") format("otf");
+    font-style: normal;
+    font-weight: 700;
+}

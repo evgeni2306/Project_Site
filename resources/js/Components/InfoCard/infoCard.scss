@@ -1,0 +1,28 @@
+@import '../../../css/globals.scss';
+
+.info-card {
+    margin: 0 200px;
+    display: flex;
+    gap: 12px;
+
+    &__container  {
+        width: 230px;
+        padding: 30px 20px;
+        background: #FFFFFF;
+        border-radius: 3px;
+        box-shadow: 0px 8px 40px rgba(4, 17, 63, 0.05);
+        transition: all 0.2s ease-out;
+        cursor: pointer;
+
+        &:hover {
+            border: 2px solid $primary-btn;
+        }
+    }
+
+    &__name {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+        color: #000;
+    }
+}

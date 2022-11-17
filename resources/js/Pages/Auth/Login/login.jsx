@@ -8,9 +8,8 @@ import PasswordShowHide from '@/Components/PasswordShowHide/passwordShowHide';
 import '../Register/register.scss';
 
 
-export default function Login({ status, errorMessage }) {
+export default function Login({ status,  }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        errorMessage: errorMessage,
         login: '',
         password: '',
     });
@@ -48,7 +47,7 @@ export default function Login({ status, errorMessage }) {
                         handleChange={onHandleChange}
                     />
 
-                    <InputError message={errorMessage} className="form__error" />
+                    <InputError message={errors.email} className="form__error" />
 
                     <PasswordShowHide
                         setData={setData}

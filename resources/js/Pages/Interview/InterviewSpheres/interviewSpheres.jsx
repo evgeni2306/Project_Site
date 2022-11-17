@@ -1,5 +1,5 @@
 import React from 'react';
-import { Head, Link } from '@inertiajs/inertia-react';
+import { Head } from '@inertiajs/inertia-react';
 import Header from '@/Components/Header/header';
 import SphereDirection from '@/Components/SphereDirection/sphereDirection';
 
@@ -11,11 +11,8 @@ export default function InterviewSpheres({spheres}) {
         <div className="spheres">
             <Head title="Interview Spheres" />
             <Header />
-            <h1 className="spheres__title">Выберите IT-сферу, в котором хотите пройти собеседование</h1>
-            {/* <div className="spheres__cards"> */}
-                <SphereDirection spheres={spheres} />
-            {/* </div> */}
-
+            <h1 className="spheres__title">Выберите IT-сферу, в которой хотите пройти собеседование</h1>
+            <SphereDirection spheres={spheres} />
         </div>
     );
 }

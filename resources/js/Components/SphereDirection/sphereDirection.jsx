@@ -6,7 +6,6 @@ import './sphereDirection.scss';
 export default function SphereDirection({spheres}) {
 
     let spheresInfo = spheres;
-    console.log(spheresInfo)
     
     return (
         <div className="wrapper">

@@ -16,16 +16,15 @@ class GetDirectionsController extends Controller
     {
         $directions = $this->getDirectionsForInterview($id);
         if (!is_string($directions)) {
-            dd($directions);// <-эту строчку убрать  расскоментировать нижнюю и указать путь к странице
-            //                return Inertia::render('Auth/Register/register', ['directions' => $directions]);
+            return Inertia::render('Interview/InterviewDirections/interviewDirections', ['directions' => $directions]);
         }
         //тут ничего не трогать
-        dd($directions);
+        dd('проблема с загрузкой направлений');
 //                return Inertia::render('Auth/Register/register', ['errorMessage'=>$spheres]);
 
     }
 
-    public function getDirectionsForInterview($id)
+    public function getDirectionsForInterview($id): string|array
     {
         $directions = $this->curlGet('interview/new/sphere', "=$id");
         if ($directions[0] == 200) {

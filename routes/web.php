@@ -24,15 +24,7 @@ session_start();
 |
 */
 
-//Route::get('/', function () {
-//    return Inertia::render('Welcome', [
-//        'canLogin' => Route::has('login'),
-//        'canRegister' => Route::has('register'),
-//        'laravelVersion' => Application::VERSION,
-//        'phpVersion' => PHP_VERSION,
-//    ]);
-//});
-Route::middleware('guest')->group(function () {
+//Route::middleware('guest')->group(function () {
 
     Route::get('registration', [RegistrationController::class, 'create']);
     Route::post('registration', [RegistrationController::class, 'store'])->name('registration');
@@ -40,9 +32,9 @@ Route::middleware('guest')->group(function () {
     Route::get('login', [AuthorizationController::class, 'create']);
     Route::post('login', [AuthorizationController::class, 'store'])->name('login');
 
-});
+//});
 
-Route::middleware('auth')->group(function () {
+//Route::middleware('auth')->group(function () {
 
     Route::get('/interview/new', [GetSpheresController::class, 'create'])->name('interviewSphere');
     Route::get('/interview/new/sphere={idd}', [GetDirectionsController::class, 'create'])->name('interviewDirection');
@@ -51,7 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::get('interview/new/sphere/direction/technology/profession={idd}', [PreviewPageController::class, 'create'])->name('interviewPreview');
     Route::get('interview/start={idd}', [InterviewStartController::class, 'startInterview'])->name('interviewStart');
     Route::get('interview/question', [GetNextQuestionController::class, 'nextQuestion'])->name('interviewQuestion');
-});
+//});
 
 Route::get('/logout', function () {
     session_destroy();

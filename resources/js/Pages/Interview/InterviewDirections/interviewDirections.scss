@@ -1,0 +1,17 @@
+@import '../../../../css/globals.scss';
+
+html,
+body {
+    background-color: $main-bg;
+}
+
+.directions {
+    text-align: center;
+
+    &__title {
+        margin: 77px 0 40px 0;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 32px;
+    }
+}

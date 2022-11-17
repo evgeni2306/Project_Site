@@ -20,12 +20,12 @@ class PreviewPageController extends Controller
             //                return Inertia::render('Auth/Register/register', ['technologies' => $technologies]);
         }
         //тут ничего не трогать
-        dd($previewPageInfo);
+        dd('проблема с preview');
 //                return Inertia::render('Auth/Register/register', ['errorMessage'=>$spheres]);
 
     }
 
-    public function getInformationForPreview($profId)
+    public function getInformationForPreview($profId):string|\stdClass
     {
         $previewPageInfo = $this->curlGet('interview/new/sphere/direction/technology/profession', "=$profId");
         if ($previewPageInfo[0] == 200) {

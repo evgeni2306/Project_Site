@@ -6,7 +6,7 @@ html,
 body {
     padding: 0;
     margin: 0;
-    font-family: 'Suisse Intl', sans-serif;
+    font-family: "Suisse Intl", sans-serif;
     font-size: 15px;
     min-height: 100vh;
 }
@@ -48,9 +48,14 @@ button {
     cursor: pointer;
 }
 
-$main-bg: #F3F5F9;
-$primary-btn: #345CEB;
-$primary-btn-hover: #2A51DB;
-$primary-btn-active: #254BD1;
-$error: #F8222F;
-$header-bg: #04113F;
+$main-bg: #f3f5f9;
+$header-bg: #04113f;
+
+$primary-btn: #345ceb;
+$primary-btn-hover: #2a51db;
+$primary-btn-active: #254bd1;
+
+$error: #f8222f;
+
+$main-accent: #e4e9ff;
+$secondary-accent: #f3f5f9;

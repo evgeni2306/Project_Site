@@ -1,0 +1,148 @@
+@import "../../../../css/globals.scss";
+
+html,
+body {
+    background-color: $main-bg;
+}
+
+.preview {
+    &__container {
+        padding: 40px 200px 60px;
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+    }
+
+    &-card {
+        width: 800px;
+        background: #ffffff;
+        border-radius: 8px;
+
+        &__top {
+            padding: 32px 0;
+            text-align: center;
+            background: #04113f;
+            border-radius: 8px 8px 0 0;
+        }
+
+        &__title {
+            margin-bottom: 6px;
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 32px;
+            color: #00cfcf;
+        }
+
+        &__subtitle {
+            font-weight: 600;
+            font-size: 22px;
+            line-height: 140%;
+            color: #ffffff;
+        }
+
+        &__main {
+            padding: 24px 40px 40px;
+        }
+
+        &__start {
+            padding: 20px;
+            margin-top: 24px;
+            text-align: center;
+            background: $secondary-accent;
+            border-radius: 8px;
+        }
+
+        &__btn {
+            margin: 0 auto;
+        }
+    }
+
+    &-recomendation {
+        padding: 20px;
+        width: 370px;
+        height: fit-content;
+        display: flex;
+        background: $main-accent;
+        border-radius: 3px;
+
+        & img {
+            width: 32px;
+            height: 32px;
+        }
+
+        &__text-cont {
+            margin-left: 12px;
+        }
+
+        &__text {
+            margin-bottom: 12px;
+            line-height: 140%;
+        }
+
+        &__textlink {
+            font-weight: 600;
+            color: $primary-btn;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+
+        &__link {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            color: $primary-btn;
+            line-height: 120%;
+
+            &-arrow {
+                width: 8px;
+                height: 8px;
+                border-top: 2px solid $primary-btn;
+                border-right: 2px solid $primary-btn;
+                margin-left: 9px;
+                transform: rotate(45deg);
+            }
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.infoblock {
+    display: flex;
+    gap: 16px;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+
+    &__icon {
+        min-width: 64px;
+        height: 64px;
+        position: relative;
+        border-radius: 50%;
+        background: $main-accent;
+
+        & img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+    &__title {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 19px;
+    }
+    &__subtitle {
+        margin-top: 8px;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 140%;
+        color: #66676c;
+    }
+}

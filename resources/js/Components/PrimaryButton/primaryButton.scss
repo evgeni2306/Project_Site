@@ -1,4 +1,4 @@
-@import '../../../css/globals.scss';
+@import "../../../css/globals.scss";
 
 .primary-button {
     padding: 15px;
@@ -17,5 +17,10 @@
 
     &:active {
         background: $primary-btn-active;
+    }
+
+    & svg {
+        margin-right: 10px;
+        vertical-align: middle;
     }
 }

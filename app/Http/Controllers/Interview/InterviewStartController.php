@@ -13,8 +13,10 @@ class InterviewStartController extends Controller
 
     public function startInterview(int $profId)
     {
+//        dd(123);
         $interviewId = $this->createInterview($profId, $_SESSION["authKey"]);
         if (!is_string($interviewId)) {
+
             $_SESSION["interviewId"] = $interviewId;
             return redirect(route('interviewQuestion'));
         }
@@ -27,7 +29,7 @@ class InterviewStartController extends Controller
         $url = "interview/start";
         $data = $this->curlPost($url, $array);
         if ($data[0] == 200) {
-            return $data[1];
+            return $data[1]->interviewId;
         }
         return 'problem';
     }

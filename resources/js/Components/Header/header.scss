@@ -1,9 +1,9 @@
-@import '../../../css/globals.scss';
+@import "../../../css/globals.scss";
 
 .header {
     padding: 0 100px;
     width: 100%;
-    color: #FFFFFF;
+    color: #ffffff;
     background: $header-bg;
 
     &__container {
@@ -23,12 +23,12 @@
             height: 44px;
             border-radius: 50%;
         }
-        
+
         &-arrow {
             width: 10px;
             height: 10px;
-            border-top: 3px solid #FFFFFF;
-            border-right: 3px solid #FFFFFF;
+            border-top: 3px solid #ffffff;
+            border-right: 3px solid #ffffff;
             margin-left: 10px;
             transform: rotate(135deg);
         }
@@ -43,7 +43,7 @@
     line-height: 23px;
 
     &__icon {
-        background: linear-gradient(90.15deg, #5F82FF 0.13%, #00E6E6 99.89%);
+        background: linear-gradient(90.15deg, #5f82ff 0.13%, #00e6e6 99.89%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -82,13 +82,4 @@
             }
         }
     }
-}
-
-.primary-button {
-    padding: 10px 20px !important;
-    border: 1px solid #345CEB !important;
-}
-
-.secondary-button {
-    margin-right: 12px;
 }

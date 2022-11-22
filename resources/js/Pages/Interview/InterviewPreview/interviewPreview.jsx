@@ -95,7 +95,7 @@ export default function InterviewPreview({ previewPageInfo }) {
                             </div>
                         </div>
                         <div className="preview-card__start">
-                            <Link href="#" id={previewPageInfo.id}>
+                            <Link href={route(previewPageInfo.url,previewPageInfo.id)} id={previewPageInfo.id}>
                                 <PrimaryButton>
                                     <svg
                                         width="13"

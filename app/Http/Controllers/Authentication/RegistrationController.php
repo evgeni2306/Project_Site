@@ -1,29 +1,32 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Authentication;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Files\curl_post;
 
-class AuthorizationController extends Controller
+class RegistrationController extends Controller
 {
     use curl_post;
 
     public function create($errorMessage = null): \Inertia\Response
     {
-        return Inertia::render('Auth/Login/login', ['errorMessage' => $errorMessage]);
+        return Inertia::render('Auth/Register/register', ['errorMessage' => $errorMessage]);
     }
 
     public function store(Request $request): \Inertia\Response|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
     {
         $request->validate([
-            'login' => 'required|string',
+            'name' => 'required|string|max:255',
+            'surname' => 'required|string|max:255',
+            'login' => 'required|string|max:255',
             'password' => 'required|string',
         ]);
-        $url = 'login';
+
+        $url = 'registration';
         $data = $this->curlPost($url, $request->all());
         if ($data[0] != 200) {
             return $this->create($errorMessage = $data[1]->message);
@@ -32,6 +35,4 @@ class AuthorizationController extends Controller
         $_SESSION["authKey"] = $data[1]->key;
         return redirect(\route('interviewSphere'));
     }
-
-
 }

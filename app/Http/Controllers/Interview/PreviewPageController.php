@@ -17,6 +17,8 @@ class PreviewPageController extends Controller
 
         $previewPageInfo = $this->getInformationForPreview($profId);
         if (!is_string($previewPageInfo)) {
+            $previewPageInfo->url = 'interviewStart';
+//            dd($previewPageInfo);
             return Inertia::render('Interview/InterviewPreview/interviewPreview', ['previewPageInfo' => $previewPageInfo]);
         }
         //тут ничего не трогать
@@ -25,7 +27,7 @@ class PreviewPageController extends Controller
 
     }
 
-    public function getInformationForPreview($profId):string|\stdClass
+    public function getInformationForPreview($profId): string|\stdClass
     {
         $previewPageInfo = $this->curlGet('interview/new/sphere/direction/technology/profession', "=$profId");
         if ($previewPageInfo[0] == 200) {

@@ -17,8 +17,9 @@ class GetNextQuestionController extends Controller
         $question = $this->getNextQuestion($_SESSION["interviewId"], $_SESSION["authKey"]);
         if (!is_string($question)) {
             if ($question != null) {
+                $_SESSION["taskId"]=$question->taskId;
                 dd($question);//<-эту строчку убрать  расскоментировать нижнюю и указать путь к странице
-                //                return Inertia::render('Auth/Register/register', ['professions' => $professions]);
+                //                return Inertia::render('Auth/Register/register', ['question' => $question]);
 
             }
             dd('вопросы кончились');//тут будет переход на страницу с результатами

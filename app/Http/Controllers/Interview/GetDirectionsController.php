@@ -3,18 +3,19 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Interview;
 
+use App\Files\UnderSpheresInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
 use App\Files\curl_get;
 
-class GetDirectionsController extends Controller
+class GetDirectionsController extends Controller implements UnderSpheresInterface
 {
     use curl_get;
 
-    public function create($id): \Inertia\Response
+    public function createPage(int $id): \Inertia\Response
     {
-        $directions = $this->getDirectionsForInterview($id);
+        $directions = $this->getData($id);
         if (!is_string($directions)) {
             return Inertia::render('Interview/InterviewDirections/interviewDirections', ['directions' => $directions]);
         }
@@ -24,7 +25,7 @@ class GetDirectionsController extends Controller
 
     }
 
-    public function getDirectionsForInterview($id): string|array
+    public function getData(int $id): string|array
     {
         $directions = $this->curlGet('interview/new/sphere', "=$id");
         if ($directions[0] == 200) {

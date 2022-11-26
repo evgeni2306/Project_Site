@@ -11,7 +11,7 @@ class GetSpheresController extends Controller
 {
     use curl_get;
 
-    public function create(): \Inertia\Response
+    public function createPage(): \Inertia\Response
     {
         $spheres = $this->getSpheresForInterview();
         if (!is_string($spheres)) {

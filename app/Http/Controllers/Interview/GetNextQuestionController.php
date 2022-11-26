@@ -12,12 +12,12 @@ class GetNextQuestionController extends Controller
 {
     use curl_post;
 
-    public function nextQuestion()
+    public function createPage()
     {
         $question = $this->getNextQuestion($_SESSION["interviewId"], $_SESSION["authKey"]);
         if (!is_string($question)) {
             if ($question != null) {
-                $_SESSION["taskId"]=$question->taskId;
+                $_SESSION["taskId"] = $question->taskId;
                 dd($question);//<-эту строчку убрать  расскоментировать нижнюю и указать путь к странице
                 //                return Inertia::render('Auth/Register/register', ['question' => $question]);
 

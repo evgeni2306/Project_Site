@@ -13,7 +13,7 @@ class AnswerTaskController extends Controller
 {
     use curl_post;
 
-    public function answerTask(string $answer):string
+    public function answerTask(string $answer): string
     {
         if ($answer != "true" and $answer != "false") {
             dd("ответ неккоретный");

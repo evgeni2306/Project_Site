@@ -6,8 +6,6 @@ import React from "react";
 import "./interviewPreview.scss";
 
 export default function InterviewPreview({ previewPageInfo }) {
-    console.log(previewPageInfo);
-
     return (
         <div className="preview">
             <Head title="Interview Preview" />
@@ -32,10 +30,10 @@ export default function InterviewPreview({ previewPageInfo }) {
                             </div>
                             <div className="infoblock__text">
                                 <span className="infoblock__title">
-                                    10 вопросов
+                                    {previewPageInfo.count} вопросов
                                 </span>
                                 <div className="infoblock__subtitle">
-                                    Тренировочное собеседование состоит из 10
+                                    Тренировочное собеседование состоит из
                                     вопросов персонального, ситуационного и
                                     технического характера.
                                 </div>
@@ -95,7 +93,13 @@ export default function InterviewPreview({ previewPageInfo }) {
                             </div>
                         </div>
                         <div className="preview-card__start">
-                            <Link href={route(previewPageInfo.url,previewPageInfo.id)} id={previewPageInfo.id}>
+                            <Link
+                                href={route(
+                                    previewPageInfo.url,
+                                    previewPageInfo.id
+                                )}
+                                id={previewPageInfo.id}
+                            >
                                 <PrimaryButton>
                                     <svg
                                         width="13"
@@ -124,7 +128,7 @@ export default function InterviewPreview({ previewPageInfo }) {
                             с 
                             <Link className="preview-recomendation__textlink">
                                 гайдом по подготовке.
-                            </Link>{" "}
+                            </Link>
                             В нем собрана информация о том, какие бывают этапы
                             отбора в различных компаниях, для чего они нужны,
                             с кем предстоит пообщаться, а также много

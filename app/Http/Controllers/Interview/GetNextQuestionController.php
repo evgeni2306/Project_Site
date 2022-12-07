@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Interview;
 use App\Files\curl_post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Inertia\Inertia;
 
 class GetNextQuestionController extends Controller
 {
@@ -18,8 +19,7 @@ class GetNextQuestionController extends Controller
         if (!is_string($question)) {
             if ($question != null) {
                 $_SESSION["taskId"]=$question->taskId;
-                dd($question);//<-эту строчку убрать  расскоментировать нижнюю и указать путь к странице
-                //                return Inertia::render('Auth/Register/register', ['question' => $question]);
+                    return Inertia::render('Interview/InterviewQuestion/interviewQuestion', ['question' => $question]);
 
             }
             dd('вопросы кончились');//тут будет переход на страницу с результатами

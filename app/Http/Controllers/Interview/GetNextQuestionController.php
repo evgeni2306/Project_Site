@@ -13,16 +13,16 @@ class GetNextQuestionController extends Controller
 {
     use curl_post;
 
-    public function nextQuestion()
+    public function createPage(): \Inertia\Response|\Illuminate\Http\RedirectResponse
     {
         $question = $this->getNextQuestion($_SESSION["interviewId"], $_SESSION["authKey"]);
         if (!is_string($question)) {
             if ($question != null) {
-                $_SESSION["taskId"]=$question->taskId;
-                    return Inertia::render('Interview/InterviewQuestion/interviewQuestion', ['question' => $question]);
+                $_SESSION["taskId"] = $question->taskId;
+                return Inertia::render('Interview/InterviewQuestion/interviewQuestion', ['question' => $question]);
 
             }
-            dd('вопросы кончились');//тут будет переход на страницу с результатами
+            return redirect(route('interviewResults'));
         }
         dd('problem');
     }

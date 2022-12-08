@@ -4,18 +4,18 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Interview;
 
 use App\Files\curl_get;
-use Illuminate\Http\Request;
+use App\Files\UnderSpheresInterface;
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
 
-class PreviewPageController extends Controller
+class PreviewPageController extends Controller implements UnderSpheresInterface
 {
     use curl_get;
 
-    public function create(int $profId): \Inertia\Response
+    public function createPage(int $profId): \Inertia\Response
     {
 
-        $previewPageInfo = $this->getInformationForPreview($profId);
+        $previewPageInfo = $this->getData($profId);
         if (!is_string($previewPageInfo)) {
             $previewPageInfo->url = 'interviewStart';
 //            dd($previewPageInfo);
@@ -27,7 +27,7 @@ class PreviewPageController extends Controller
 
     }
 
-    public function getInformationForPreview($profId): string|\stdClass
+    public function getData($profId): string|\stdClass
     {
         $previewPageInfo = $this->curlGet('interview/new/sphere/direction/technology/profession', "=$profId");
         if ($previewPageInfo[0] == 200) {

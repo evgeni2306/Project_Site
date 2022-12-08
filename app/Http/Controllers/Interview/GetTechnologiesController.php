@@ -4,17 +4,18 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Interview;
 
 use App\Files\curl_get;
+use App\Files\UnderSpheresInterface;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
 
-class GetTechnologiesController extends Controller
+class GetTechnologiesController extends Controller implements UnderSpheresInterface
 {
     use curl_get;
 
-    public function create($id): \Inertia\Response
+    public function createPage(int $id): \Inertia\Response
     {
-        $technologies = $this->getTechnologiesForInterview($id);
+        $technologies = $this->getData($id);
         if (!is_string($technologies)) {
             return Inertia::render('Interview/InterviewTechnologies/interviewTechnologies', ['technologies' => $technologies]);
         }
@@ -24,7 +25,7 @@ class GetTechnologiesController extends Controller
 
     }
 
-    public function getTechnologiesForInterview($id): string|array
+    public function getData(int $id): string|array
     {
         $url = 'interview/new/sphere/direction';
         $directions = $this->curlGet($url, "=$id");

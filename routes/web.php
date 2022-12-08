@@ -5,6 +5,8 @@ use App\Http\Controllers\Authentication\AuthorizationController;
 use App\Http\Controllers\Interview\GetSpheresController;
 use App\Http\Controllers\Interview\GetDirectionsController;
 use App\Http\Controllers\Interview\AnswerTaskController;
+use App\Http\Controllers\Interview\GetResultsController;
+use App\Http\Controllers\Interview\InterviewTemplateController;
 use App\Http\Controllers\Interview\GetTechnologiesController;
 use App\Http\Controllers\Interview\GetProfessionsController;
 use App\Http\Controllers\Interview\PreviewPageController;
@@ -37,14 +39,16 @@ Route::middleware('guest')->group(function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/interview/new', [GetSpheresController::class, 'create'])->name('interviewSphere');
-    Route::get('/interview/new/sphere={idd}', [GetDirectionsController::class, 'create'])->name('interviewDirection');
-    Route::get('interview/new/sphere/direction={idd}', [GetTechnologiesController::class, 'create'])->name('interviewTechnology');
-    Route::get('interview/new/sphere/direction/technology={idd}', [GetProfessionsController::class, 'create'])->name('interviewProfession');
-    Route::get('interview/new/sphere/direction/technology/profession={idd}', [PreviewPageController::class, 'create'])->name('interviewPreview');
+    Route::get('/interview/new', [GetSpheresController::class, 'createPage'])->name('interviewSphere');
+    Route::get('/interview/new/sphere={idd}', [GetDirectionsController::class, 'createPage'])->name('interviewDirection');
+    Route::get('interview/new/sphere/direction={idd}', [GetTechnologiesController::class, 'createPage'])->name('interviewTechnology');
+    Route::get('interview/new/sphere/direction/technology={idd}', [GetProfessionsController::class, 'createPage'])->name('interviewProfession');
+    Route::get('interview/new/sphere/direction/technology/profession={idd}', [PreviewPageController::class, 'createPage'])->name('interviewPreview');
     Route::get('interview/start={idd}', [InterviewStartController::class, 'startInterview'])->name('interviewStart');
-    Route::get('interview/question', [GetNextQuestionController::class, 'nextQuestion'])->name('interviewQuestion');
+    Route::get('interview/templates', [InterviewTemplateController::class, 'createPage'])->name('interviewTemplates');
+    Route::get('interview/question', [GetNextQuestionController::class, 'createPage'])->name('interviewQuestion');
     Route::get('interview/question/answer={answer}', [AnswerTaskController::class,'answerTask'])->name('interviewAnswerTask');
+    Route::get('/interview/results', [GetResultsController::class, 'createPage'])->name('interviewResults');
 });
 
 Route::get('/logout', function () {

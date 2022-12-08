@@ -17,6 +17,7 @@ class PreviewPageController extends Controller implements UnderSpheresInterface
 
         $previewPageInfo = $this->getData($profId);
         if (!is_string($previewPageInfo)) {
+            $_SESSION['profName'] = $previewPageInfo->name;
             $previewPageInfo->url = 'interviewStart';
 //            dd($previewPageInfo);
             return Inertia::render('Interview/InterviewPreview/interviewPreview', ['previewPageInfo' => $previewPageInfo]);

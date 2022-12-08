@@ -12,6 +12,7 @@ use App\Http\Controllers\Interview\GetProfessionsController;
 use App\Http\Controllers\Interview\PreviewPageController;
 use App\Http\Controllers\Interview\InterviewStartController;
 use App\Http\Controllers\Interview\GetNextQuestionController;
+use App\Http\Controllers\FavoriteQuestionController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -47,11 +48,16 @@ Route::middleware('auth')->group(function () {
     Route::get('interview/start={idd}', [InterviewStartController::class, 'startInterview'])->name('interviewStart');
     Route::get('interview/templates', [InterviewTemplateController::class, 'createPage'])->name('interviewTemplates');
     Route::get('interview/question', [GetNextQuestionController::class, 'createPage'])->name('interviewQuestion');
-    Route::get('interview/question/answer={answer}', [AnswerTaskController::class,'answerTask'])->name('interviewAnswerTask');
+    Route::get('interview/question/answer={answer}', [AnswerTaskController::class, 'answerTask'])->name('interviewAnswerTask');
     Route::get('/interview/results', [GetResultsController::class, 'createPage'])->name('interviewResults');
+    Route::get('question/favorite/add={idd}', [FavoriteQuestionController::class, 'addFavorite'])->name('questionFavoriteAdd');
+    Route::get('question/favorite/delete={idd}', [FavoriteQuestionController::class, 'deleteFavorite'])->name('questionFavoriteDel');
 });
 
 Route::get('/logout', function () {
     session_destroy();
     return redirect(\route('login'));
+});
+Route::fallback(function () {
+    return redirect(route('login'));
 });

@@ -18,6 +18,8 @@ class GetNextQuestionController extends Controller
         $question = $this->getNextQuestion($_SESSION["interviewId"], $_SESSION["authKey"]);
         if (!is_string($question)) {
             if ($question != null) {
+                $question->profName=$_SESSION['profName'];
+                dd($question);
                 $_SESSION["taskId"] = $question->taskId;
                 return Inertia::render('Interview/InterviewQuestion/interviewQuestion', ['question' => $question]);
 

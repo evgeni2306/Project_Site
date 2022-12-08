@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Interview;
 
 use App\Files\curl_get;
 use App\Files\UnderSpheresInterface;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
 

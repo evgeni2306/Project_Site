@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::get('interview/templates', [InterviewTemplateController::class, 'createPage'])->name('interviewTemplates');
     Route::get('interview/question', [GetNextQuestionController::class, 'createPage'])->name('interviewQuestion');
     Route::get('interview/question/answer={answer}', [AnswerTaskController::class,'answerTask'])->name('interviewAnswerTask');
-    Route::get('/interview/results', [GetResultsController::class, 'create']);
+    Route::get('/interview/results', [GetResultsController::class, 'createPage'])->name('interviewResults');
 });
 
 Route::get('/logout', function () {

@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Interview;
 
-use Illuminate\Http\Request;
 use App\Files\curl_post;
 use App\Http\Controllers\Controller;
 
@@ -11,7 +10,7 @@ class InterviewStartController extends Controller
 {
     use curl_post;
 
-    public function startInterview(int $profId)
+    public function startInterview(int $profId): \Illuminate\Http\RedirectResponse
     {
 //        dd(123);
         $interviewId = $this->createInterview($profId, $_SESSION["authKey"]);

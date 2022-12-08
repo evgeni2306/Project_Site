@@ -14,7 +14,7 @@ class GetResultsController extends Controller
 {
     use curl_post;
 
-    public function createPage()
+    public function createPage(): \Inertia\Response
     {
         $results = $this->getResults($_SESSION["authKey"]);
         if (!is_string($results)) {

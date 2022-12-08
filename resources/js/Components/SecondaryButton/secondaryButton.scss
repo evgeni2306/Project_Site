@@ -1,22 +1,24 @@
-@import '../../../css/globals.scss';
+@import "../../../css/globals.scss";
 
 .secondary-button {
     padding: 10px 20px;
-    color: #fff;
+    color: $primary-btn;
     font-weight: 700;
     font-size: 15px;
     line-height: 120%;
     background: none;
     border-radius: 3px;
-    border: 1px solid #FFFFFF;
+    border: 1px solid $primary-btn;
     transition: all 0.3s ease;
 
     &:hover {
+        color: #ffffff;
         background: $primary-btn;
         border: 1px solid $primary-btn;
     }
 
     &:active {
+        color: #ffffff;
         background: $primary-btn-active;
     }
 }

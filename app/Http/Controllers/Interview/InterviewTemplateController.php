@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Interview;
 
 use App\Files\curl_post;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
 
@@ -13,7 +12,7 @@ class InterviewTemplateController extends Controller
 {
     use curl_post;
 
-    public function createPage()
+    public function createPage(): \Inertia\Response
     {
         $templates = $this->getData($_SESSION["authKey"]);
         if (!is_string($templates)) {

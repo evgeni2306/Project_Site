@@ -1,0 +1,79 @@
+@import "../../../../css/globals.scss";
+
+html,
+body {
+    background-color: $main-bg;
+}
+
+.template {
+    text-align: center;
+
+    &__title {
+        margin: 77px 0 20px 0;
+        font-weight: 700;
+        font-size: 28px;
+        line-height: 32px;
+    }
+
+    &__subtitle {
+        margin: 0;
+        line-height: 140%;
+        color: #66676c;
+    }
+
+    &__container {
+        margin: 40px 300px 0;
+    }
+
+    &__row {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+
+        &:not(:last-child) {
+            margin-bottom: 8px;
+        }
+
+        &-delete {
+            border: none;
+            background: none;
+        }
+    }
+
+    &__cell {
+        width: 100%;
+        display: flex;
+        padding: 20px 25px;
+        text-align: left;
+        align-items: center;
+        justify-content: space-between;
+        background: #ffffff;
+        border-radius: 3px;
+        transition: all 0.1s ease;
+
+        &:hover {
+            border: 1px solid $primary-btn;
+            box-shadow: 0px 8px 40px rgba(4, 17, 63, 0.05);
+        }
+
+        &-name {
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 19px;
+            color: #000000;
+        }
+
+        &-arrow {
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid $primary-btn;
+            border-right: 2px solid $primary-btn;
+            margin-left: 10px;
+            transform: rotate(45deg);
+        }
+    }
+
+    &__btn-new {
+        margin: 160px 0 60px !important;
+    }
+}

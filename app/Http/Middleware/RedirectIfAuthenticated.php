@@ -20,7 +20,7 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next)
     {
         if (isset($_SESSION["auth"])) {
-            return redirect(route('interviewSphere'));
+            return redirect(route('interviewTemplates'));
         }
 
 

@@ -18,8 +18,7 @@ class GetResultsController extends Controller
     {
         $results = $this->getResults($_SESSION["authKey"]);
         if (!is_string($results)) {
-            dd($results);//-<это удалить, нижнее раскоментить и указать путь
-            // return Inertia::render('Interview/InterviewProfessions/interviewProfessions', ['results' => $results]);
+            return Inertia::render('Interview/InterviewGetResults/interviewGetResults', ['results' => $results]);
         }
         dd('проблема с загрузкой результатов');
     }

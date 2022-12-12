@@ -33,6 +33,6 @@ class RegistrationController extends Controller
         }
         $_SESSION["auth"] = true;
         $_SESSION["authKey"] = $data[1]->key;
-        return redirect(\route('interviewSphere'));
+        return redirect(\route('interviewTemplates'));
     }
 }

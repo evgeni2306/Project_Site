@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
     Route::get('interview/new/sphere/direction/technology/profession={idd}', [PreviewPageController::class, 'createPage'])->name('interviewPreview');
     Route::get('interview/start={idd}', [InterviewStartController::class, 'startInterview'])->name('interviewStart');
     Route::get('interview/templates', [InterviewTemplateController::class, 'createPage'])->name('interviewTemplates');
+    Route::get('interview/templates/delete', [InterviewTemplateController::class, 'deleteTemplate'])->name('deleteTemplate');
     Route::get('interview/question', [GetNextQuestionController::class, 'createPage'])->name('interviewQuestion');
     Route::get('interview/question/answer={answer}', [AnswerTaskController::class, 'answerTask'])->name('interviewAnswerTask');
     Route::get('/interview/results', [GetResultsController::class, 'createPage'])->name('interviewResults');

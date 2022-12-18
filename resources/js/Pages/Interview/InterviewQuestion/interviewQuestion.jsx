@@ -27,7 +27,7 @@ export default function InterviewQuestion(question) {
             <Header />
             <div className="question-page__header">
                 <div className="question-page__header-title">
-                    Собеседование iOS-разработчик
+                    {question.question.profName}
                 </div>
                 <div className="question-page__header-progress"></div>
                 <div className="question-page__header-btn">

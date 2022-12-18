@@ -16,8 +16,7 @@ class InterviewTemplateController extends Controller
     {
         $templates = $this->getData($_SESSION["authKey"]);
         if (!is_string($templates)) {
-            dd($templates);//<-это удалить, нижнее раскоментировать и указать путь
-            // return Inertia::render('Interview/InterviewPreview/interviewPreview', ['templates' => $templates]);
+            return Inertia::render('Interview/InterviewTemplate/interviewTemplate', ['templates' => $templates]);
         }
         dd('Проблема с получением шаблонов');
     }

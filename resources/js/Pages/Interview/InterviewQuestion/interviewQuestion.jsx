@@ -10,6 +10,7 @@ import "./interviewQuestion.scss";
 export default function InterviewQuestion(question) {
     const [answerIsShown, setAnswerIsShown] = useState(false);
     const [nextQuestionIsShown, setNextQuestionIsShown] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
 
     const toggleShow = () => {
         setAnswerIsShown(!answerIsShown);
@@ -19,6 +20,14 @@ export default function InterviewQuestion(question) {
         axios.get(`question/answer=${answer}`).then((response) => {
             if (response.status === 200) setNextQuestionIsShown(true);
         });
+    };
+
+    const onFavoriteClick = () => {
+        axios
+            .get(`question/favorite/add=${question.question.questionId}`)
+            .then((response) => {
+                if (response.status === 200) setIsFavorite(!isFavorite);
+            });
     };
 
     return (
@@ -49,6 +58,13 @@ export default function InterviewQuestion(question) {
                                         {question.question.category}
                                     </div>
                                 </div>
+                                {/* <Link
+                                    href={route(
+                                        questionFavoriteAdd,
+                                        question.question.questionId
+                                    )}
+                                    id={question.question.questionId}
+                                > */}
                                 <div className="question__top-favourites">
                                     <div className="question__top-favourites__icon">
                                         <img
@@ -58,10 +74,16 @@ export default function InterviewQuestion(question) {
                                             height="15px"
                                         />
                                     </div>
-                                    <button className="question__top-favourites__btn">
+                                    <button
+                                        className="question__top-favourites__btn"
+                                        onClick={() => {
+                                            onFavoriteClick();
+                                        }}
+                                    >
                                         Добавить в избранное
                                     </button>
                                 </div>
+                                {/* </Link> */}
                             </div>
                             <div className="question__body">
                                 {question.question.question}

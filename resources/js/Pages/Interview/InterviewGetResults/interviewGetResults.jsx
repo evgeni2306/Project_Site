@@ -1,14 +1,13 @@
 import Header from "@/Components/Header/header";
 import PrimaryButton from "@/Components/PrimaryButton/primaryButton";
-import SecondaryButton from "@/Components/SecondaryButton/secondaryButton";
 import { Head, Link } from "@inertiajs/inertia-react";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import "./interviewGetResults.scss";
 
 export default function InterviewGetResults(results) {
     let res = results.results;
+    console.log(results);
 
     let done = Math.round(
         (res.countRight * 100) / (res.countRight + res.countWrong)
@@ -23,7 +22,6 @@ export default function InterviewGetResults(results) {
 
         setStyle(newStyle);
     }, 1000);
-    console.log(done);
 
     return (
         <div className="results-page">
@@ -82,9 +80,9 @@ export default function InterviewGetResults(results) {
                         </div>
                     ))}
                 </div>
-                {/* <Link href={route("")}> */}
+                {/* <Link href={route("interviewStart")}> */}
                 <PrimaryButton>
-                    {/* <img src="/img/return.svg" /> */}
+                    <img src="/img/return.svg" />
                     Попробовать еще раз
                 </PrimaryButton>
                 {/* </Link> */}

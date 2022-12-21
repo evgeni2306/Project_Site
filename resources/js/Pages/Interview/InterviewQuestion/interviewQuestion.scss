@@ -101,18 +101,13 @@ body {
             display: flex;
 
             &__icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 height: 32px;
                 width: 32px;
-                position: relative;
                 border-radius: 50%;
                 background: $main-accent;
-            }
-
-            & img {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
             }
 
             &__btn {

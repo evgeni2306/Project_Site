@@ -10,8 +10,8 @@ export default function InterviewTemplate(templates) {
     const templatesArr = templates.templates;
     const [isDeleted, setIsDeleted] = useState(false);
 
-    const onDeleteClick = () => {
-        axios.get(``).then((response) => {
+    const onDeleteClick = (id) => {
+        axios.get(route('deleteTemplate',id)).then((response) => {
             if (response.status === 200) setIsDeleted(true);
         });
     };
@@ -43,7 +43,7 @@ export default function InterviewTemplate(templates) {
                                 <button
                                     className="template__row-delete"
                                     onClick={() => {
-                                        onDeleteClick();
+                                        onDeleteClick(template.id);
                                     }}
                                 >
                                     <img src="/img/basket.svg" alt="basket" />

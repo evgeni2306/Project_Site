@@ -15,6 +15,7 @@ class InterviewTemplateController extends Controller
     public function createPage(): \Inertia\Response
     {
         $templates = $this->getData($_SESSION["authKey"]);
+//        dd($templates);
         if (!is_string($templates)) {
             return Inertia::render('Interview/InterviewTemplate/interviewTemplate', ['templates' => $templates]);
         }
@@ -33,5 +34,19 @@ class InterviewTemplateController extends Controller
             return $templates[1];
         }
         return $templates[1]->message;
+    }
+
+    public function deleteTemplate($id): \Illuminate\Http\RedirectResponse|string
+    {
+        if (is_numeric($id) && $id > 0) {
+            $url = 'interview/templates/delete';
+            $array = ["authKey" => $_SESSION["authKey"], "templateId" => $id];
+            $delete = $this->curlPost($url, $array);
+            if ($delete[0] == 200) {
+                return 'ok';
+            }
+
+        }
+        return redirect(route('interviewTemplates'));
     }
 }

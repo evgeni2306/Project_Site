@@ -15,7 +15,7 @@ class FavoriteQuestionController extends Controller
         $url = 'question/favorite/add';
         $send = $this->sendRequest($url, $data);
         if (is_numeric($send)) {
-            return "ok";
+            return $send;
         }
         dd('Что-то с сервером');
     }
@@ -26,7 +26,7 @@ class FavoriteQuestionController extends Controller
         $url = 'question/favorite/delete';
         $send = $this->sendRequest($url, $data);
         if (is_numeric($send)) {
-            return "ok";
+            return 1;
         }
         dd('Что-то с сервером');
     }

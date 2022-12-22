@@ -51,6 +51,7 @@ Route::middleware('auth')->group(function () {
     Route::get('interview/question', [GetNextQuestionController::class, 'createPage'])->name('interviewQuestion');
     Route::get('interview/question/answer={answer}', [AnswerTaskController::class,'answerTask'])->name('interviewAnswerTask');
     Route::get('/interview/results', [GetResultsController::class, 'createPage'])->name('interviewResults');
+
     Route::get('question/favorite/add={idd}', [FavoriteQuestionController::class, 'addFavorite'])->name('questionFavoriteAdd');
     Route::get('question/favorite/delete={idd}', [FavoriteQuestionController::class, 'deleteFavorite'])->name('questionFavoriteDel');
 

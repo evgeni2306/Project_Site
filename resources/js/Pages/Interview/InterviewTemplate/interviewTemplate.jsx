@@ -32,7 +32,7 @@ export default function InterviewTemplate(templates) {
                             <div className="template__row">
                                 <Link
                                     className="template__cell"
-                                    href={route(template.url, template.id)}
+                                    href={route(template.url, template.professionId)}
                                     key={template.id}
                                 >
                                     <span className="template__cell-name">

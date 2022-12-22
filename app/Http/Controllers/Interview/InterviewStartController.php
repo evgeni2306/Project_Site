@@ -16,6 +16,7 @@ class InterviewStartController extends Controller
         $interviewId = $this->createInterview($profId, $_SESSION["authKey"]);
         if (!is_string($interviewId)) {
 
+            $_SESSION["professionId"] = $profId;
             $_SESSION["interviewId"] = $interviewId;
             return redirect(route('interviewQuestion'));
         }

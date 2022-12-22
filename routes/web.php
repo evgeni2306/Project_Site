@@ -59,3 +59,7 @@ Route::get('/logout', function () {
     session_destroy();
     return redirect(\route('login'));
 });
+
+Route::fallback(function () {
+    return redirect(route('login'));
+});

@@ -80,12 +80,12 @@ export default function InterviewGetResults(results) {
                         </div>
                     ))}
                 </div>
-                {/* <Link href={route("interviewStart")}> */}
+                 <Link href={route(res.url,res.professionId)}>
                 <PrimaryButton>
                     <img src="/img/return.svg" />
                     Попробовать еще раз
                 </PrimaryButton>
-                {/* </Link> */}
+                 </Link>
             </div>
         </div>
     );

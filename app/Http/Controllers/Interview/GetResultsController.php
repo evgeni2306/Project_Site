@@ -17,6 +17,8 @@ class GetResultsController extends Controller
     public function createPage(): \Inertia\Response
     {
         $results = $this->getResults($_SESSION["authKey"]);
+        $results->url = "interviewPreview";
+        $results->professionId = $_SESSION["professionId"];
         if (!is_string($results)) {
             return Inertia::render('Interview/InterviewGetResults/interviewGetResults', ['results' => $results]);
         }

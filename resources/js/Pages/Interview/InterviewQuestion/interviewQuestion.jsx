@@ -24,17 +24,17 @@ export default function InterviewQuestion(question) {
     console.log(question.question);
 
     const onFavoriteClickAdd = (questionId, favoriteId) => {
-        axios.get("questionFavoriteAdd", questionId).then((response) => {
+        axios.get(route("questionFavoriteAdd",questionId)).then((response) => {
             if (response.status === 200) {
                 question.question.isFavorite = 1;
                 setIsFav(1);
-                question.question.favoriteId = favoriteId;
+                question.question.favoriteId = response.data;
             }
         });
     };
 
-    const onFavoriteClickDelete = (questionId) => {
-        axios.get("questionFavoriteDel", questionId).then((response) => {
+    const onFavoriteClickDelete = (favoriteId) => {
+        axios.get(route("questionFavoriteDel", favoriteId)).then((response) => {
             if (response.status === 200) {
                 question.question.isFavorite = 0;
                 setIsFav(0);
@@ -109,7 +109,7 @@ export default function InterviewQuestion(question) {
                                             className="question__top-favourites__btn"
                                             onClick={() => {
                                                 onFavoriteClickDelete(
-                                                    question.question.questionId
+                                                    question.question.favoriteId
                                                 );
                                             }}
                                         >

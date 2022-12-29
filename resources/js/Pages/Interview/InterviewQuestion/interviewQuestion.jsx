@@ -21,10 +21,9 @@ export default function InterviewQuestion(question) {
             if (response.status === 200) setNextQuestionIsShown(true);
         });
     };
-    console.log(question.question);
 
     const onFavoriteClickAdd = (questionId, favoriteId) => {
-        axios.get(route("questionFavoriteAdd",questionId)).then((response) => {
+        axios.get(route("questionFavoriteAdd", questionId)).then((response) => {
             if (response.status === 200) {
                 question.question.isFavorite = 1;
                 setIsFav(1);
@@ -71,7 +70,7 @@ export default function InterviewQuestion(question) {
                                         {question.question.category}
                                     </div>
                                 </div>
-                                {isFav === 0 ? (
+                                {question.question.isFavorite === 0 ? (
                                     <div className="question__top-favourites">
                                         <div className="question__top-favourites__icon">
                                             <svg
@@ -170,7 +169,7 @@ export default function InterviewQuestion(question) {
                                     {question.question.category}
                                 </div>
                             </div>
-                            {isFav === 0 ? (
+                            {question.question.isFavorite === 0 ? (
                                 <div className="question__top-favourites">
                                     <div className="question__top-favourites__icon">
                                         <svg
@@ -207,7 +206,7 @@ export default function InterviewQuestion(question) {
                                         className="question__top-favourites__btn"
                                         onClick={() => {
                                             onFavoriteClickDelete(
-                                                question.question.questionId
+                                                question.question.favoriteId
                                             );
                                         }}
                                     >

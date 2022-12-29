@@ -7,7 +7,6 @@ import "./interviewGetResults.scss";
 
 export default function InterviewGetResults(results) {
     let res = results.results;
-    console.log(results);
 
     let done = Math.round(
         (res.countRight * 100) / (res.countRight + res.countWrong)
@@ -43,13 +42,20 @@ export default function InterviewGetResults(results) {
                             className="results-page__progress-bar-done"
                             style={style}
                         >
-                            <div className="percent-count">{done}%</div>
+                            <div className="percent-count">
+                                {done > 0 ? done + "%" : ""}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <h2 className="results-page__title-sec">
-                    Вам следует обратить внимание на эти вопросы
-                </h2>
+                {done === 100 ? (
+                    ""
+                ) : (
+                    <h2 className="results-page__title-sec">
+                        Вам следует обратить внимание на эти вопросы
+                    </h2>
+                )}
+
                 <div className="results-page__questions">
                     {res.wrongQuestions.map((wrongQuestion) => (
                         <div
@@ -80,12 +86,9 @@ export default function InterviewGetResults(results) {
                         </div>
                     ))}
                 </div>
-                 <Link href={route(res.url,res.professionId)}>
-                <PrimaryButton>
-                    <img src="/img/return.svg" />
-                    Попробовать еще раз
-                </PrimaryButton>
-                 </Link>
+                <Link href={route(res.url, res.professionId)}>
+                    <PrimaryButton>Попробовать еще раз</PrimaryButton>
+                </Link>
             </div>
         </div>
     );

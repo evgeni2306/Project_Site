@@ -1,4 +1,4 @@
-@import '../../../../css/globals.scss';
+@import "../../../../css/globals.scss";
 
 html,
 body {
@@ -18,7 +18,7 @@ body {
 
     &__icon {
         margin: 0 auto;
-        background: linear-gradient(90.15deg, #5F82FF 0.13%, #00E6E6 99.89%);
+        background: linear-gradient(90.15deg, #5f82ff 0.13%, #00e6e6 99.89%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -55,7 +55,7 @@ body {
         width: 100%;
         margin-bottom: 12px;
         padding: 12px 16px;
-        border: 1px solid #DFE1E8;
+        border: 1px solid #dfe1e8;
         border-radius: 3px;
 
         &:focus {
@@ -64,6 +64,9 @@ body {
     }
 
     &__error {
+        padding: 11px 15px;
+        color: $error;
+        border-radius: 3px;
         border: 1px solid $error;
     }
 }

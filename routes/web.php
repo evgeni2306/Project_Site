@@ -12,7 +12,13 @@ use App\Http\Controllers\Interview\GetProfessionsController;
 use App\Http\Controllers\Interview\PreviewPageController;
 use App\Http\Controllers\Interview\InterviewStartController;
 use App\Http\Controllers\Interview\GetNextQuestionController;
+
+
 use App\Http\Controllers\FavoriteQuestionController;
+
+use App\Http\Controllers\KnowledgeBase\GetProfessionsController as KB_GetProfessionsController;
+use App\Http\Controllers\KnowledgeBase\GetQuestionsController as KB_GetQuestionsController;
+
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -54,6 +60,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('question/favorite/add={idd}', [FavoriteQuestionController::class, 'addFavorite'])->name('questionFavoriteAdd');
     Route::get('question/favorite/delete={idd}', [FavoriteQuestionController::class, 'deleteFavorite'])->name('questionFavoriteDel');
+
+    Route::get('/knowledgebase/professions', [KB_GetProfessionsController::class, 'getProfessionsForKnowledgeBase']);
+    Route::get('/knowledgebase/professions/questions={idd}', [KB_GetQuestionsController::class, 'getQuestionsForKnowledgeBase']);
+
 
 });
 

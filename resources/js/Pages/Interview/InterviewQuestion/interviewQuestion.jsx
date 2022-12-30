@@ -22,7 +22,7 @@ export default function InterviewQuestion(question) {
         });
     };
 
-    const onFavoriteClickAdd = (questionId, favoriteId) => {
+    const onFavoriteClickAdd = (questionId) => {
         axios.get(route("questionFavoriteAdd", questionId)).then((response) => {
             if (response.status === 200) {
                 question.question.isFavorite = 1;
@@ -41,6 +41,8 @@ export default function InterviewQuestion(question) {
             }
         });
     };
+
+    console.log(question.question.isFavorite);
 
     return (
         <div className="question-page">

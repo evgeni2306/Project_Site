@@ -16,8 +16,7 @@ class GetProfessionsController extends Controller
     {
         $professions = $this->getData($_SESSION["authKey"]);
         if (!is_string($professions)) {
-            dd($professions);//<- это убрать, нижнее раскоментить и указать путь
-            //return Inertia::render('Interview/InterviewGetResults/interviewGetResults', ['professions' => $professions]);
+            return Inertia::render('KnowledgeBase/knowledgeBase', ['professions' => $professions]);
         }
         dd('проблема с загрузкой списка профессий для базы знаний');
     }

@@ -200,14 +200,26 @@ body {
     display: flex;
     align-items: center;
     background: #ffffff;
+    color: #04113f;
     border-radius: 3px;
     border: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        color: #ffffff;
+        background: $primary-btn;
+        border: 1px solid $primary-btn;
+    }
+
+    &:active {
+        color: #ffffff;
+        background: $primary-btn-active;
+    }
 
     &__text {
         margin-left: 8px;
         font-weight: 700;
         font-size: 15px;
         line-height: 120%;
-        color: #04113f;
     }
 }

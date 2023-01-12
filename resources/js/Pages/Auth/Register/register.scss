@@ -11,13 +11,21 @@ body {
 
 .logo-register {
     margin-top: 130px;
-    display: flex;
     font-weight: 900;
     font-size: 28px;
     line-height: 32px;
 
+    &__wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     &__icon {
-        margin: 0 auto;
+        margin-right: 7px;
+    }
+
+    &__name {
         background: linear-gradient(90.15deg, #5f82ff 0.13%, #00e6e6 99.89%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;

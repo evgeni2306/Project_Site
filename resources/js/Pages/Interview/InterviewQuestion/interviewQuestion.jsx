@@ -10,7 +10,7 @@ import "./interviewQuestion.scss";
 export default function InterviewQuestion(question) {
     const [answerIsShown, setAnswerIsShown] = useState(false);
     const [nextQuestionIsShown, setNextQuestionIsShown] = useState(false);
-    const [isFav, setIsFav] = useState(0);
+    const [isFav, setIsFav] = useState(question.isFavorite);
 
     const toggleShow = () => {
         setAnswerIsShown(!answerIsShown);
@@ -41,8 +41,6 @@ export default function InterviewQuestion(question) {
             }
         });
     };
-
-    console.log(question.question.isFavorite);
 
     return (
         <div className="question-page">

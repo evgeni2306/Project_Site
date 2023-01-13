@@ -1,19 +1,21 @@
 import Header from "@/Components/Header/header";
 import PrimaryButton from "@/Components/PrimaryButton/primaryButton";
-import SecondaryButton from "@/Components/SecondaryButton/secondaryButton";
 import { Head, Link } from "@inertiajs/inertia-react";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import "./interviewGetResults.scss";
 
 export default function InterviewGetResults(results) {
     let res = results.results;
 
+    const [style, setStyle] = useState({});
+
     let done = Math.round(
         (res.countRight * 100) / (res.countRight + res.countWrong)
     );
-    const [style, setStyle] = useState({});
+
+    const [isFavWrongQuest, setIsFavWrongQuest] = useState(0);
 
     setTimeout(() => {
         const newStyle = {
@@ -23,7 +25,34 @@ export default function InterviewGetResults(results) {
 
         setStyle(newStyle);
     }, 1000);
-    console.log(done);
+
+    const onFavoriteClickAdd = (questionId) => {
+        axios.get(route("questionFavoriteAdd", questionId)).then((response) => {
+            if (response.status === 200) {
+                for (let i = 0; i < res.wrongQuestions.length; i++) {
+                    if (res.wrongQuestions[i].questionId === questionId) {
+                        res.wrongQuestions[i].isFavorite = 1;
+                        setIsFavWrongQuest(1);
+                        res.wrongQuestions[i].favoriteId = response.data;
+                    }
+                }
+            }
+        });
+    };
+
+    const onFavoriteClickDelete = (favoriteId) => {
+        axios.get(route("questionFavoriteDel", favoriteId)).then((response) => {
+            if (response.status === 200) {
+                for (let i = 0; i < res.wrongQuestions.length; i++) {
+                    if (res.wrongQuestions[i].favoriteId === favoriteId) {
+                        res.wrongQuestions[i].isFavorite = 0;
+                        setIsFavWrongQuest(0);
+                        res.wrongQuestions[i].favoriteId = 0;
+                    }
+                }
+            }
+        });
+    };
 
     return (
         <div className="results-page">
@@ -45,13 +74,20 @@ export default function InterviewGetResults(results) {
                             className="results-page__progress-bar-done"
                             style={style}
                         >
-                            <div className="percent-count">{done}%</div>
+                            <div className="percent-count">
+                                {done > 0 ? done + "%" : ""}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <h2 className="results-page__title-sec">
-                    Вам следует обратить внимание на эти вопросы
-                </h2>
+                {done === 100 ? (
+                    ""
+                ) : (
+                    <h2 className="results-page__title-sec">
+                        Вам следует обратить внимание на эти вопросы
+                    </h2>
+                )}
+
                 <div className="results-page__questions">
                     {res.wrongQuestions.map((wrongQuestion) => (
                         <div
@@ -62,19 +98,45 @@ export default function InterviewGetResults(results) {
                                 <div className="results-page__question-top-tag">
                                     {wrongQuestion.category}
                                 </div>
-                                <div className="results-page__question-top-favourites">
-                                    <div className="results-page__question-top-favourites__icon">
-                                        <img
-                                            src="/img/previewIcons/favourites.svg"
-                                            alt="favourites"
-                                            width="16px"
-                                            height="15px"
-                                        />
+                                {wrongQuestion.isFavorite === 0 ? (
+                                    <div className="results-page__question-top-favourites">
+                                        <div className="results-page__question-top-favourites__icon">
+                                            <img
+                                                src="/img/previewIcons/favourites.svg"
+                                                alt="favourites"
+                                                width="16px"
+                                                height="15px"
+                                            />
+                                        </div>
+                                        <button
+                                            className="results-page__question-top-favourites__btn"
+                                            onClick={() => {
+                                                onFavoriteClickAdd(
+                                                    wrongQuestion.questionId,
+                                                    wrongQuestion.favoriteId
+                                                );
+                                            }}
+                                        >
+                                            Добавить в избранное
+                                        </button>
                                     </div>
-                                    <button className="results-page__question-top-favourites__btn">
-                                        Добавить в избранное
-                                    </button>
-                                </div>
+                                ) : (
+                                    <div className="results-page__question-top-favourites">
+                                        <div className="results-page__question-top-favourites__icon">
+                                            <img src="/img/previewIcons/fillFavourites.svg" />
+                                        </div>
+                                        <button
+                                            className="results-page__question-top-favourites__btn"
+                                            onClick={() => {
+                                                onFavoriteClickDelete(
+                                                    wrongQuestion.favoriteId
+                                                );
+                                            }}
+                                        >
+                                            Добавлено в избранное
+                                        </button>
+                                    </div>
+                                )}
                             </div>
                             <div className="results-page__question__body">
                                 {wrongQuestion.question}
@@ -82,12 +144,9 @@ export default function InterviewGetResults(results) {
                         </div>
                     ))}
                 </div>
-                {/* <Link href={route("")}> */}
-                <PrimaryButton>
-                    {/* <img src="/img/return.svg" /> */}
-                    Попробовать еще раз
-                </PrimaryButton>
-                {/* </Link> */}
+                <Link href={route(res.url, res.professionId)}>
+                    <PrimaryButton>Попробовать еще раз</PrimaryButton>
+                </Link>
             </div>
         </div>
     );

@@ -101,18 +101,13 @@ body {
             display: flex;
 
             &__icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 height: 32px;
                 width: 32px;
-                position: relative;
                 border-radius: 50%;
                 background: $main-accent;
-            }
-
-            & img {
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
             }
 
             &__btn {
@@ -205,14 +200,26 @@ body {
     display: flex;
     align-items: center;
     background: #ffffff;
+    color: #04113f;
     border-radius: 3px;
     border: none;
+    transition: all 0.3s ease;
+
+    &:hover {
+        color: #ffffff;
+        background: $primary-btn;
+        border: 1px solid $primary-btn;
+    }
+
+    &:active {
+        color: #ffffff;
+        background: $primary-btn-active;
+    }
 
     &__text {
         margin-left: 8px;
         font-weight: 700;
         font-size: 15px;
         line-height: 120%;
-        color: #04113f;
     }
 }

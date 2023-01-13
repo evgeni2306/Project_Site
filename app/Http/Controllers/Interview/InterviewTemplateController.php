@@ -15,6 +15,7 @@ class InterviewTemplateController extends Controller
     public function createPage(): \Inertia\Response
     {
         $templates = $this->getData($_SESSION["authKey"]);
+//        dd($templates);
         if (!is_string($templates)) {
             return Inertia::render('Interview/InterviewTemplate/interviewTemplate', ['templates' => $templates]);
         }

@@ -38,11 +38,16 @@
 .logo {
     margin: 0;
     display: flex;
+    align-items: center;
     font-weight: 900;
     font-size: 21px;
     line-height: 23px;
 
     &__icon {
+        margin-right: 10px;
+    }
+
+    &__name {
         background: linear-gradient(90.15deg, #5f82ff 0.13%, #00e6e6 99.89%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -50,6 +55,7 @@
 }
 
 .menu {
+    margin-left: -35%;
     &__list {
         display: flex;
         padding: 0;
@@ -81,5 +87,17 @@
                 border-radius: 4px;
             }
         }
+    }
+}
+
+@media (max-width: 1350px) {
+    .menu {
+        margin-left: -20%;
+    }
+}
+
+@media (max-width: 1130px) {
+    .menu {
+        margin-left: 0;
     }
 }

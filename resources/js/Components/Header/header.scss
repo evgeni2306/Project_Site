@@ -55,7 +55,8 @@
 }
 
 .menu {
-    margin-left: -35%;
+    margin-left: -25%;
+
     &__list {
         display: flex;
         padding: 0;
@@ -86,6 +87,11 @@
                 background: $primary-btn;
                 border-radius: 4px;
             }
+        }
+
+        &-icon {
+            margin-right: 8px;
+            vertical-align: bottom;
         }
     }
 }

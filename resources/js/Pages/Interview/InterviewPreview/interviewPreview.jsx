@@ -42,8 +42,8 @@ export default function InterviewPreview({ previewPageInfo }) {
                         <div className="preview-card__infoblock infoblock">
                             <div className="infoblock__icon">
                                 <img
-                                    src="/img/previewIcons/person.svg"
-                                    alt="person"
+                                    src="/img/previewIcons/cloud.svg"
+                                    alt="cloud"
                                 />
                             </div>
                             <div className="infoblock__text">

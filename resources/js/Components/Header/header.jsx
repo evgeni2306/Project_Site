@@ -21,6 +21,13 @@ export default function Header({}) {
                         </li>
                         <li className="menu__item">База знаний</li>
                         <li className="menu__item">Избранное</li>
+                        <li className="menu__item">
+                            <img
+                                className="menu__item-icon"
+                                src="/img/plus.svg"
+                            />
+                            Пополнить базу знаний
+                        </li>
                     </ul>
                 </nav>
                 <nav className="header__user">

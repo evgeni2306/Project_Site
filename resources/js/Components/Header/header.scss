@@ -54,6 +54,9 @@
     }
 }
 
+.linkItem{
+    color:white;
+}
 .menu {
     margin-left: -25%;
 
@@ -66,16 +69,16 @@
     &__item {
         padding: 20px 0;
         position: relative;
-        font-weight: 500;
         transition: all 0.3s ease;
         cursor: pointer;
+        font-weight: 700;
 
         &:not(:last-child) {
             margin-right: 32px;
         }
 
         &:hover {
-            font-weight: 700;
+
 
             &::after {
                 content: "";

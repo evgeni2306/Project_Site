@@ -102,7 +102,7 @@ export default function InterviewGetResults(results) {
                                     <div className="results-page__question-top-favourites">
                                         <div className="results-page__question-top-favourites__icon">
                                             <img
-                                                src="/img/previewIcons/favourites.svg"
+                                                src="/img/previewIcons/emptyFavourites.svg"
                                                 alt="favourites"
                                                 width="16px"
                                                 height="15px"

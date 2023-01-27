@@ -9,10 +9,29 @@ body {
     text-align: center;
 
     &__title {
-        margin: 77px 0 40px;
+        margin: 77px 0 20px;
         font-weight: 700;
         font-size: 28px;
         line-height: 32px;
+    }
+
+    &__subtitle {
+        margin-bottom: 20px;
+        font-weight: 400;
+        font-size: 15px;
+        line-height: 140%;
+        color: #66676c;
+    }
+
+    &__link {
+        margin-left: 3px;
+        font-weight: 600;
+        color: $primary-btn;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     &__container {
@@ -34,53 +53,82 @@ body {
             color: #989898;
         }
     }
-}
 
-.dropdown {
-    width: 80%;
-    text-align: left;
-    color: #000000;
-
-    &__arrow-closed,
-    &__arrow-open {
-        display: inline-block;
-        position: absolute;
-        right: 10px;
-        margin-right: 16px;
-        width: 10px;
-        height: 10px;
-        border-top: 3px solid $primary-btn;
-        border-right: 3px solid $primary-btn;
-        border-width: 2px;
-        transition: all 0.3s ease;
+    &__questions {
+        margin: 20px 0px 40px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
     }
 
-    &__arrow-closed {
-        top: 14px;
-        transform: rotate(135deg);
+    &__wrapper {
+        width: 49%;
     }
 
-    &__arrow-open {
-        top: 17px;
-        transform: rotate(-45deg);
-    }
-
-    &__control {
-        padding: 12px 16px;
-        border-radius: 3px;
-        border: none;
-        border-radius: 3px;
+    &__question {
+        max-height: 120px;
+        padding: 25px;
+        text-align: left;
+        background: #ffffff;
+        border-radius: 8px;
         cursor: pointer;
 
-        &:hover {
-            box-shadow: 0px 8px 40px rgba(4, 17, 63, 0.05);
+        &:not(:last-child) {
+            margin-bottom: 16px;
         }
-    }
 
-    &__menu {
-        padding: 8px 6px;
-        border: none;
-        border-radius: 3px;
-        box-shadow: none;
+        &-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+
+            &-tag {
+                padding: 5px 10px;
+                font-weight: 600;
+                font-size: 15px;
+                line-height: 17px;
+                color: #6f00ff;
+                background: $secondary-accent;
+                border-radius: 3px;
+            }
+
+            &-favourites {
+                display: flex;
+
+                &__icon {
+                    height: 32px;
+                    width: 32px;
+                    position: relative;
+                    border-radius: 50%;
+                    background: $main-accent;
+                }
+
+                & img {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+
+                &__btn {
+                    padding: 0;
+                    margin-left: 8px;
+                    font-weight: 700;
+                    font-size: 15px;
+                    line-height: 120%;
+                    color: $primary-btn;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        &__body {
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 140%;
+        }
     }
 }

@@ -61,8 +61,8 @@ Route::middleware('auth')->group(function () {
     Route::get('question/favorite/add={idd}', [FavoriteQuestionController::class, 'addFavorite'])->name('questionFavoriteAdd');
     Route::get('question/favorite/delete={idd}', [FavoriteQuestionController::class, 'deleteFavorite'])->name('questionFavoriteDel');
 
-    Route::get('/knowledgebase/professions', [KB_GetProfessionsController::class, 'getProfessionsForKnowledgeBase']);
-    Route::get('/knowledgebase/professions/questions={idd}', [KB_GetQuestionsController::class, 'getQuestionsForKnowledgeBase']);
+    Route::get('/knowledgebase/professions', [KB_GetProfessionsController::class, 'getProfessionsForKnowledgeBase'])->name('getProfessionsForKnowledgeBase');
+    Route::get('/knowledgebase/professions/questions={idd}', [KB_GetQuestionsController::class, 'getQuestionsForKnowledgeBase'])->name('getQuestionsForKnowledgeBase');
 
 
 });
